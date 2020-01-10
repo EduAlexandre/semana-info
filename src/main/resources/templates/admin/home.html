@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<a href="/logout">Sair</a>
+	<h1 class="h1-1">Lista de Gestores</h1>
+	<label>Manages</label>
+	<table border="1">
+	    <tr>
+	        <td>Nome</td>
+	        <td>Email</td>
+	        <td>Hash-Code</td>
+	        <td>Actions</td>
+	    </tr>
+	    <tr th:each="list : ${listManager}">
+	        <td th:text="${list.nomeManager}"></td>
+	        <td th:text="${list.emailManager}"></td>
+	        <td th:text="${list.hashCode}"></td>
+	        <td><a th:href="|/deleteM/${list.idManager}|">Delete</a></td>
+	    </tr>
+	</table>
+	<br>
+	<br>
+	
+	<form class="log" th:action="@{/emailManager}" th:object="${manager}" method="post">
+
+       	<h1 class="h1-1">Enviar cadastro para os Gestores</h1>
+
+        <label for="email">Email</label><br>
+        <input type="email" placeholder="Email" class="inp" th:field="*{emailManager}"><br>
+            
+        <br><button class="but" type="submit">Acessar</button>
+     </form>
+</body>
+</html>

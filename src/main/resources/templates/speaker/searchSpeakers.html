@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Lista dos palestrantes</title>
+</head>
+<body>
+<h1>Cadastrados</h1>
+
+<table border="1">
+  
+<thead>  
+  <tr>
+    <th>Nome</th>
+    <th>Sobrenome</th>
+    <th>Email</th>
+    <th>Açoes</th>    
+  </tr>
+</thead>  
+	 <tr th:each="lis : ${list}">
+	  <td th:text="${lis.speakName}"></td>
+	 
+	  <td th:text="${lis.surName}"></td> 
+	 
+	  <td th:text="${lis.email}"></td>
+	  <td>
+	   <a th:href="@{/palestrante/{cod}(cod=${lis.id})}">Editar</a>
+	  </td>
+	 </tr>
+  
+  <tr th:if="${#lists.isEmpty(list)}">
+   <td colspan="4">Nenhum palestante cadastrado</td>
+  </tr>
+
+</table>
+
+</body>
+</html>

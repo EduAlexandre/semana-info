@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/saveManager}" th:object="${manager}" method="post">
+	  ID:<br>
+	  <input type="text" th:field="*{idManager}">
+	  <br>
+	  Nome:<br>
+	  <input type="text" th:field="*{nomeManager}">
+	  <br>
+	  Email:<br>
+	  <input type="email" th:field="*{emailManager}">
+	  <br>
+	  Senha:<br>
+	  <input type="senha" th:field="*{senhaManager}">
+	  <br><br>
+	  <button type="submit" >Enviar</button>
+	</form>
+</body>
+</html>

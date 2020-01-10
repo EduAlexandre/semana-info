@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/saveManager}" th:object="${manager}" method="post">
+	  Nome:<br>
+	  <input type="text" th:field="*{nomeManager}">
+	  <br>
+	  Email:<br>
+	  <input type="email" th:field="*{emailManager}">
+	  <br>
+	  Senha:<br>
+	  <input type="senha" th:field="*{senhaManager}">
+	  <br><br>
+	  <button type="submit" >Enviar</button>
+	</form> 
+</body>
+</html>

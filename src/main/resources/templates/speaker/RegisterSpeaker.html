@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1 th:if="${speaker.new}">Cadastro de Palestrante</h1>
+
+
+<h2 th:unless="${speaker.new}" th:text="|Olá ${speaker.speakName}, edite seus dados|">Edição</h2>
+
+   <th:block th:include="fragments/successMessage"></th:block>
+
+  <form method="post" th:object="${speaker}" th:action="${speaker.new} ? @{/palestrante/novo} :
+     @{/palestrante/{cod}(cod=${speaker.id})}">  
+  
+  
+  <th:block th:include="fragments/ErrorValidateMessage"></th:block>
+ 
+ <input type="hidden" th:field="*{id}">
+  
+  <div >
+    <label>Nome</label>
+     <input type="text" id="speakName" th:field="*{speakName}">
+  </div>     
+     
+    <div >
+       <label>Sobrenome</label>
+     <input type="text" id="surName" th:field="*{surName}">
+    </div>
+    
+    <div >
+     <label>E-mail</label>
+     <input type="email" id="email" th:field="*{email}">
+    </div>   
+    
+     <div >
+     <label>Senha</label>
+     <input type="password" id="password" th:field="*{password}">
+     </div>
+     
+     <div >
+	     <label>Confirme sua senha</label>
+	     <input type="password" id="passwordConfirm">     
+     </div>    
+     
+     
+     
+     <input type="submit" value="Salvar">
+  </form>
+
+ <script th:src="@{/assets/js/jsConfirmaSenha.js}"></script> 
+</body>
+</html>
