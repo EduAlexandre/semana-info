@@ -37,10 +37,10 @@ public class MailerManager {
 	   MimeMessage minMessage = mailSender.createMimeMessage();
 	   
 	   try {
-		   String email = thymeleaf.process("email/emailManager", context);
+		String email = thymeleaf.process("email/emailManager", context);
 		MimeMessageHelper helper = new MimeMessageHelper(minMessage, true, "UTF-8");
 		helper.setFrom("besoftware9@gmail.com");
-		helper.setTo(manager.getEmailManager());
+		helper.setTo(manager.getEmail());
 		helper.setSubject("besoftware- Cadastrice agora.");
 		helper.setText(email, true);
 		

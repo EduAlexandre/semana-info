@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ifpe.semanainfo.model.Manager;
+import com.ifpe.semanainfo.service.AuteticationService;
 import com.ifpe.semanainfo.service.ManagerService;
 
 
@@ -22,6 +24,8 @@ public class ManagerController {
 	@Autowired
 	private ManagerService managerService;
 	
+	@Autowired
+	private AuteticationService auteService;
 	
 	@GetMapping("/cadManager")
 	public String showCad(Model model) {
@@ -32,11 +36,13 @@ public class ManagerController {
 	}
 	
 	@PostMapping("/saveManager")
-	public String saveManager(Manager manager) {
+	public String saveManager(Manager manager,RedirectAttributes ra) {
 		
-		managerService.save(manager);
+		auteService.autenciaUsuario(manager);
 		
-		return "redirect:/cadManager";
+		ra.addFlashAttribute("mensagemErro", "4");
+		
+		return "redirect:/";
 	}
 	
 	

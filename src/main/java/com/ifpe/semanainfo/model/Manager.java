@@ -14,9 +14,9 @@ public class Manager {
 	
 	private String nomeManager;
 	
-	private String emailManager;
+	private String email;
 	
-	private String senhaManager;
+	private String senha;
 	
 	private String hashCode;
 	
@@ -40,20 +40,20 @@ public class Manager {
 		this.nomeManager = nomeManager;
 	}
 
-	public String getEmailManager() {
-		return emailManager;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmailManager(String emailManager) {
-		this.emailManager = emailManager;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getSenhaManager() {
-		return senhaManager;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setSenhaManager(String senhaManager) {
-		this.senhaManager = senhaManager;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getHashCode() {
@@ -78,6 +78,11 @@ public class Manager {
 
 	public void setAtivo(int ativo) {
 		this.ativo = ativo;
+	}
+
+	public boolean isPresent() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

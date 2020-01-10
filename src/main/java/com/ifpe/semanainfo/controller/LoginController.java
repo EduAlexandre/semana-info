@@ -36,11 +36,11 @@ public class LoginController {
 	@PostMapping("/accomplishLogin")
 	public String accomplishLogin(Manager manager , HttpSession session,RedirectAttributes ra) {
 		
-		Manager  managerCheckend = serviceManager.sarching(manager.getEmailManager(), manager.getSenhaManager());
+		Manager  managerCheckend = serviceManager.sarching(manager.getEmail(), manager.getSenha());
 		
 		if(managerCheckend == null){
 			
-			Admin adminCheckend = serviceAdmin.sarchingAdmin(manager.getEmailManager(), manager.getSenhaManager());
+			Admin adminCheckend = serviceAdmin.sarchingAdmin(manager.getEmail(), manager.getSenha());
 			
 			if(adminCheckend == null) {
 				ra.addFlashAttribute("mensagemErro", "1");

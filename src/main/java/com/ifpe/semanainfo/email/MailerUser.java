@@ -36,7 +36,7 @@ public class MailerUser {
 		   String email = thymeleaf.process("email/EmailRecuperacao", context);
 		MimeMessageHelper helper = new MimeMessageHelper(minMessage, true, "UTF-8");
 		helper.setFrom("besoftware9@gmail.com");
-		helper.setTo(usuario.getEmailManager());
+		helper.setTo(usuario.getEmail());
 		helper.setSubject("besoftware- Confirme seu cadastro.");
 		helper.setText(email, true);
 		

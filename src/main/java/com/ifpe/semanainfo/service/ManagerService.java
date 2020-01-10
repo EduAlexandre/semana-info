@@ -48,8 +48,16 @@ public class ManagerService {
 		return repository.sarchingEmail(email);
 	}
 	
+	public Manager verificationHashCode(String hashCode) {
+		return repository.sarchingHashCode(hashCode);
+	}
+	
 	public void delete(Integer idManager) {
 		repository.deleteById(idManager);
+	}
+
+	public Manager searchingHashCode(String hashCode) {
+		return repository.sarchingHashCode(hashCode);
 	}
 	
 }

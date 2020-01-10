@@ -55,6 +55,9 @@
             case "3":
             	toastr.warning("Acesso negado");
             	break;
+            case "4":
+            	toastr.success("Cadastro realizado com sucesso!!");
+            	break;
             }
         });
   	</script>
@@ -84,10 +87,10 @@
                         <h1 class="h1-1">Entrar</h1>
 
                         <label for="email">Email</label><br>
-                       <input type="email" placeholder="Email" class="inp" th:field="*{emailManager}"><br>
+                       <input type="email" placeholder="Email" class="inp" th:field="*{email}"><br>
                             <br><label class="sen" for="senha">Senha</label><br>
                         
-                            <input type="password" placeholder="senha" class="inp" th:field="*{senhaManager}"><br><br>
+                            <input type="password" placeholder="senha" class="inp" th:field="*{senha}"><br><br>
                            
                             <a class="a-1" href="">Ainda não cadastrado ? Cadastre-se!</a><br>
                             <a class="a-1" href="">Esqueci minha Senha</a>
