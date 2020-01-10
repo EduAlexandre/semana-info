@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+ 	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div class="row">
+    <form class="col s12" th:action="@{/salvaSala}" th:object="${room}" method="POST">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="Numero de Participantes" type="text" th:field="*{numberParticipants}" class="validate">
+          <label for="Numero de Participantes">Numero de Participantes</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="Descrição" type="text" th:field="*{description}" class="validate">
+          <label for="Descrição">Descrição</label>
+        </div>
+        <div>
+        	<button>enviar</button>
+        </div>
+      </div>
+      
+    </form>
+  </div>
+        
+
+</body>
+</html>
