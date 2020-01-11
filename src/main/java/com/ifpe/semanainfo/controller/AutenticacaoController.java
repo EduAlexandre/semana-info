@@ -17,15 +17,15 @@ public class AutenticacaoController {
 	@Autowired
 	private ManagerService managerService;
 	
-	@GetMapping("/Manager/{hash}")
-	public String authUsuario(@PathVariable String hash, Manager manager,Model model) {
-		manager.setHashCode(hash);
-		
-		Manager managerObj = managerService.searchingHashCode(manager.getHashCode()); 
-		model.addAttribute("manager", managerObj);
-		
-		return "/manager/cadManager";
-	}
+//	@GetMapping("/Manager/{hash}")
+//	public String authUsuario(@PathVariable String hash, Manager manager,Model model) {
+//		manager.setHashCode(hash);
+//		
+//		Manager managerObj = managerService.searchingHashCode(manager.getHashCode()); 
+//		model.addAttribute("manager", managerObj);
+//		
+//		return "/manager/cadManager";
+//	}
 	
 	
 }

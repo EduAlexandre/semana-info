@@ -8,9 +8,10 @@ import com.ifpe.semanainfo.model.Speaker;
 
 
 
-public interface Speaks extends JpaRepository<Speaker, Long> {
+public interface Speaks extends JpaRepository<Speaker, Integer> {
 	
 	public Optional<Speaker> findByEmail(String email);
+
 	
 
 }

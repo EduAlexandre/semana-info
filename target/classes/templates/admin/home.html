@@ -16,16 +16,29 @@
 	        <td>Email</td>
 	        <td>Hash-Code</td>
 	        <td>Actions</td>
-	        <td>Hash-Code</td>
-	        <td>Actions</td>
 	    </tr>
 	    <tr th:each="list : ${listManager}">
 	        <td th:text="${list.nomeManager}"></td>
 	        <td th:text="${list.email}"></td>
-	        <td th:text="${list.hashCode}"></td>
-	        <td th:text="${list.ativo}"></td>
 	        <td th:text="${list.senha}"></td>
 	        <td><a th:href="|/deleteM/${list.idManager}|">Delete</a></td>
+	    </tr>
+	</table>
+	
+	<h1 class="h1-1">Lista de Palestrantes</h1>
+	<label>Manages</label>
+	<table border="1">
+	    <tr>
+	        <td>Nome</td>
+	        <td>Email</td>
+	        <td>Hash-Code</td>
+	        <td>Actions</td>
+	    </tr>
+	    <tr th:each="list : ${listSpeaker}">
+	        <td th:text="${list.speakName}"></td>
+	        <td th:text="${list.email}"></td>
+	        <td th:text="${list.password}"></td>
+	        <td><a th:href="|/palestrante/delete/${list.id}|">Delete</a></td>
 	    </tr>
 	</table>
 	<br>
@@ -33,9 +46,12 @@
 	
 	<form class="log" th:action="@{/emailManager}" th:object="${manager}" method="post">
 
-       	<h1 class="h1-1">Enviar cadastro para os Gestores</h1>
+       	<h1 class="h1-1">Cadastrar Gestor</h1>
 
-        <label for="email">Email</label><br>
+		<label>Nome</label><br>
+        <input type="text" placeholder="Email" class="inp" th:field="*{nomeManager}"><br>
+
+        <label>Email</label><br>
         <input type="email" placeholder="Email" class="inp" th:field="*{email}"><br>
             
         <br><button class="but" type="submit">Acessar</button>

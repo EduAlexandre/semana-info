@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import com.ifpe.semanainfo.model.Manager;
+import com.ifpe.semanainfo.model.Speaker;
 
 
 
@@ -25,18 +25,18 @@ public class MailerSpeaker {
 	private TemplateEngine thymeleaf;
 	
 	@Async
-	public void enviar(Manager restaurante){
+	public void enviar(Speaker speaker){
 	   
 		Context context =  new Context();
-	    context.setVariable("ag", restaurante);	
+	    context.setVariable("ag", speaker);	
 	   
 	   MimeMessage minMessage = mailSender.createMimeMessage();
 	   
 	   try {
-		   String email = thymeleaf.process("email/EmailConfirmacaoRestaurante", context);
+		   String email = thymeleaf.process("email/emailSpeaker", context);
 		MimeMessageHelper helper = new MimeMessageHelper(minMessage, true, "UTF-8");
 		helper.setFrom("besoftware9@gmail.com");
-		helper.setTo(restaurante.getEmail());
+		helper.setTo(speaker.getEmail());
 		helper.setSubject("besoftware- Confirme seu cadastro.");
 		helper.setText(email, true);
 		

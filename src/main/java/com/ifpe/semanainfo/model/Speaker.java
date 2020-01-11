@@ -4,41 +4,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Speaker {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
-	@Size(min = 1, max = 100)
-	@NotBlank(message = "Nome é obrigatório")
 	private String speakName;
 	
-	@Size(min = 1, max = 50)
-	@NotBlank(message = "Sobrenome é obrigatório")
-	private String surName;
-	
-	@Size(min = 1, max = 50)
-	@NotBlank(message = "E-mail é obrigatório")
 	private String email;
 	
-	@Size(min = 1, max = 50)
-	@NotBlank(message = "Senha é obrigatória")
 	private String password;
+	
+	private int permission;
 	
 	public boolean isNew() {
 		return id == null;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -48,14 +38,6 @@ public class Speaker {
 
 	public void setSpeakName(String speakName) {
 		this.speakName = speakName;
-	}
-
-	public String getSurName() {
-		return surName;
-	}
-
-	public void setSurName(String surName) {
-		this.surName = surName;
 	}
 
 	public String getEmail() {
@@ -72,6 +54,14 @@ public class Speaker {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getPermission() {
+		return permission;
+	}
+
+	public void setPermission(int permission) {
+		this.permission = permission;
 	}
 
 	@Override

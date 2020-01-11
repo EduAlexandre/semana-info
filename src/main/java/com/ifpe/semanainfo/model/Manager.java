@@ -18,11 +18,7 @@ public class Manager {
 	
 	private String senha;
 	
-	private String hashCode;
-	
 	private int permission;
-	
-	private int ativo;
 
 	public Integer getIdManager() {
 		return idManager;
@@ -55,15 +51,7 @@ public class Manager {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-	public String getHashCode() {
-		return hashCode;
-	}
-
-	public void setHashCode(String hashCode) {
-		this.hashCode = hashCode;
-	}
-
+	
 	public int getPermission() {
 		return permission;
 	}
@@ -71,20 +59,6 @@ public class Manager {
 	public void setPermission(int permission) {
 		this.permission = permission;
 	}
-
-	public int getAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(int ativo) {
-		this.ativo = ativo;
-	}
-
-	public boolean isPresent() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
 	
 	
 	

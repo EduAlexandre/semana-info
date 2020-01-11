@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ifpe.semanainfo.model.Manager;
+import com.ifpe.semanainfo.model.Speaker;
 import com.ifpe.semanainfo.service.ManagerService;
+import com.ifpe.semanainfo.service.SpeakerService;
 
 
 @Controller
@@ -16,6 +18,9 @@ public class AdminController {
 
 	@Autowired
 	private ManagerService serviceManager; 
+	
+	@Autowired
+	private SpeakerService speakerManager; 
 	
 	
 	@GetMapping("/admin")
@@ -25,6 +30,9 @@ public class AdminController {
 		
 		List<Manager> listManager = serviceManager.listAll();
 		model.addAttribute("listManager", listManager);
+		
+		List<Speaker> listSpeaker = speakerManager.listAll();
+		model.addAttribute("listSpeaker", listSpeaker);
 		
 		return "/admin/home";
 	}

@@ -10,25 +10,23 @@ import com.ifpe.semanainfo.model.Manager;
 import com.ifpe.semanainfo.model.Room;
 import com.ifpe.semanainfo.service.RoomService;
 
-
-
 @Controller
 public class RoomController {
 	
 	@Autowired
 	private RoomService roomService;
 	
-	@GetMapping("cadastroSala")
+	@GetMapping("/cadastroSala")
 	public String roomRegistration(Room room, Model model){
 		model.addAttribute("room", room);
-		return"teste";
+		return "/teste";
 	}
 	@PostMapping("/salvaSala")
 	public String saveRoom(Room room, Model model){
 		this.roomService.saveRoom(room);
 		Manager manager = new Manager();
 		model.addAttribute("manager", manager);
-		return"/index";
+		return "/index";
 	}
 	
 	

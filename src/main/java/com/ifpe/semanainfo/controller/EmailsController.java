@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ifpe.semanainfo.email.MailerManager;
+import com.ifpe.semanainfo.email.MailerSpeaker;
 import com.ifpe.semanainfo.model.Manager;
+import com.ifpe.semanainfo.model.Speaker;
 import com.ifpe.semanainfo.service.ManagerService;
+import com.ifpe.semanainfo.service.SpeakerService;
 
 @Controller
 public class EmailsController {
@@ -16,7 +19,13 @@ public class EmailsController {
 	private ManagerService managerService;
 	
 	@Autowired
+	private SpeakerService speakerService;
+	
+	@Autowired
 	private MailerManager mailManager;
+	
+	@Autowired
+	private MailerSpeaker mailSpeaker;
 	
 	@PostMapping("/emailManager")
 	public String envMail(Manager manager,RedirectAttributes ra) {
@@ -24,6 +33,16 @@ public class EmailsController {
 		managerService.save(manager);
 		
 		mailManager.enviar(manager);
+		
+		return "redirect:/admin";
+	}
+	
+	@PostMapping("/emailSpeaker")
+	public String envMail(Speaker speaker,RedirectAttributes ra) {
+		
+		speakerService.save(speaker);
+		
+		mailSpeaker.enviar(speaker);
 		
 		return "redirect:/admin";
 	}

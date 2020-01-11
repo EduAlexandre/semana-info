@@ -56,18 +56,13 @@ public class LoginController {
 			}
 			
 		}else{
-			if(managerCheckend.getAtivo() != 1) {
-				ra.addFlashAttribute("mensagemErro", "2");
+
+			if(managerCheckend.getPermission() != 3) {
+				ra.addFlashAttribute("mensagemErro", "3");
 				return "redirect:/";
 			}else {
-				if(managerCheckend.getPermission() != 3) {
-					ra.addFlashAttribute("mensagemErro", "3");
-					return "redirect:/";
-				}else {
-					session.setAttribute("managerLogado", managerCheckend);
-					return "/manager/home";
-				}
-				
+				session.setAttribute("managerLogado", managerCheckend);
+				return "redirect:/manager";
 			}
 		}
 		

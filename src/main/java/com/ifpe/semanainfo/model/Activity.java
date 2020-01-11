@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Activity {
@@ -13,7 +14,11 @@ public class Activity {
 	private Integer id;
 	private String nameEvent;
 	private int amountVacancies;
+	
+	@OneToOne
 	private Speaker speaker;
+	
+	@OneToOne
 	private Room room;
 	public Integer getId() {
 		return id;

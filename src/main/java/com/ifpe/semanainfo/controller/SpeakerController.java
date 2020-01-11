@@ -67,9 +67,15 @@ public class SpeakerController {
 		ModelAndView mv = newSpeaker(speaker);
 		mv.addObject(speaker);		
 		return mv;
-}
+	}
 	
-	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		
+		speakerService.delete(id);
+		
+		return "redirect:/admin";
+	}
 	
 	
 	
