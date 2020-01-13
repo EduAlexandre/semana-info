@@ -24,7 +24,7 @@ public class ParticipantController {
 			model.addAttribute("participant", participant);
 			
 			return "/participant/RegisterParticipant";
-		}
+		} 
 		
 		@PostMapping("/saveParticipant")
 		public String saveParticipant(Participant participant) {
