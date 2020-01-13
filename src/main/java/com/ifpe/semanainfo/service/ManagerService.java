@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ifpe.semanainfo.email.MailerManager;
+import com.ifpe.semanainfo.helper.GeneratePassword;
 import com.ifpe.semanainfo.model.Manager;
 import com.ifpe.semanainfo.repository.ManagerRepository;
 import com.ifpe.semanainfo.util.PasswordGenerate;
@@ -20,6 +22,9 @@ public class ManagerService {
 	@Autowired
 	private ManagerRepository repository;
 	
+	@Autowired
+	private MailerManager mailManager;
+	
 	
 	public void save(Manager manager) {
 		
@@ -27,15 +32,18 @@ public class ManagerService {
 		String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	    String ALPHA = "abcdefghijklmnopqrstuvwxyz";
 	    String NUMERIC = "0123456789";
-		Integer len = 10;
+		Integer len = 6;
 
 		String newSenha = PasswordGenerate.generatePassword(len, ALPHA_CAPS + ALPHA + NUMERIC);
 		
-//		newSenha = Functions.getSHA256(newSenha);
-		
 		manager.setSenha(newSenha);
+		mailManager.enviar(manager);
 		
-		manager.setPermission(3);
+		String newSenhaCrip = GeneratePassword.cripto(newSenha);
+		
+		manager.setSenha(newSenhaCrip);
+		
+		manager.setPermision(3);
 		
 		repository.save(manager);
 	}

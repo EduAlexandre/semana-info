@@ -1,9 +1,14 @@
 package com.ifpe.semanainfo.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Manager {
@@ -18,7 +23,11 @@ public class Manager {
 	
 	private String senha;
 	
-	private int permission;
+	private int permision;
+	
+	@ManyToMany
+	@JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_group"))
+	private List<Groups> groups;
 
 	public Integer getIdManager() {
 		return idManager;
@@ -51,17 +60,23 @@ public class Manager {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	public int getPermission() {
-		return permission;
+
+	public int getPermision() {
+		return permision;
 	}
 
-	public void setPermission(int permission) {
-		this.permission = permission;
+	public void setPermision(int permision) {
+		this.permision = permision;
 	}
-	
-	
-	
+
+	public List<Groups> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<Groups> groups) {
+		this.groups = groups;
+	}
+		
 	
 	
 }

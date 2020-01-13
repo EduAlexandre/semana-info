@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+/*responsive*/
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+body{
+	background-color: grey;
+	background-image: url("../img/teste1.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: all;
+}
+
+/* conteiner */
+.container  {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+    @media (min-width: 1170px) {
+        .container {
+            max-width: 1170px;
+            padding: 0;
+        }
+    }
+
+/* linha */
+.row {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+    .row:before,
+    .row:after {
+        content: "";
+        display: table;
+    }
+    .row:after {
+        clear: both;
+    }
+
+/* colunas */
+.col {
+    display: inline-block;
+    vertical-align: top;
+    min-height: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    margin-right: -4px;
+    *zoom: 1;
+    *display: inline;
+}
+    /* duas colonas */
+    @media (min-width: 700px) {
+        .col-2 {
+            width: 50%;
+        }
+    }
+
+
+/**/
+
+
+/*todo o conteúdo do formulário */
+
+form{
+
+	margin-left: 20%;
+}
+ @media (max-width: 700px) {
+        form{
+           margin-left: 0%;
+        }
+    }
+
+
+
+
+label{
+	font-family: "play";
+	color: #f1f1f1;
+}
+.cont{
+margin-top:30%;
+
+}
+
+.inp{
+	font-size: 18px;
+	margin-top: 10px;
+	width: 100%;
+	height: 50px;
+	border-radius: 4px;
+	border: 2px solid white;
+	padding: 10px;
+	outline: none;
+	background-color: #f1f1f1;
+}
+.but:hover{
+
+
+}
+.but{transition: 0.5s;
+	width: 100%;
+	height: 70px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-family: "Play";
+	cursor: pointer;
+	border-radius: 10px;
+	border: 1px solid white;
+	outline: none;
+	margin-top: 10px;
+	background-color: #f1f1f1;
+}
+
+.h1-1{
+font-family: "Play";
+margin-bottom: 20px;
+color: white;
+font-size: 60px;
+
+}
+.a-1{
+	font-family: "play";
+	font-size: 18px;
+
+color: white;
+}
+
+/**/
+
+/*titulo e descricao do evento*/
+.cont-2{
+	margin-top: 46%;
+	border-right: 1px solid white;
+	height: 300px; 
+}
+
+
+
+ @media (max-width: 700px) {
+        .cont-2{
+        	border-right: 0px solid white;
+       
+        }
+    }
+
+
+
+.h1-2{ 
+font-family: 'lobster';
+margin-bottom: 20px;
+color: #FFEC8B;
+font-size: 50px;
+text-align: center;
+
+
+}
+
+
+	.h3-1{ text-align: center;
+		color: #FFEC8B;
+		font-family: "Raleway";
+		font-size: 20px;
+
+	}
+/**/
+

@@ -1,40 +1,42 @@
 package com.ifpe.semanainfo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.ifpe.semanainfo.model.Admin;
 import com.ifpe.semanainfo.model.Manager;
-import com.ifpe.semanainfo.model.Speaker;
+import com.ifpe.semanainfo.repository.GroupsRepository;
 import com.ifpe.semanainfo.service.ManagerService;
 import com.ifpe.semanainfo.service.SpeakerService;
-
 
 @Controller
 public class AdminController {
 
 	@Autowired
-	private ManagerService serviceManager; 
+	private GroupsRepository groupRepository;
 	
 	@Autowired
-	private SpeakerService speakerManager; 
+	private ManagerService serviceManager;
 	
-	
-	@GetMapping("/admin")
-	public String showAdminHome(Model model){
+	@Autowired
+	private SpeakerService serviceSpeaker;
+		
+	@GetMapping("/admin/novo")
+	public ModelAndView add(Admin admin) {
+		ModelAndView mv = new ModelAndView("admin/home");
+		//mv.addObject("groups", groupRepository.findAll());
+		
+		mv.addObject("listManager", serviceManager.listAll());
+		
+		mv.addObject("listSpeaker", serviceSpeaker.listAll());
+		
 		Manager manager = new Manager();
-		model.addAttribute("manager", manager);
+		mv.addObject("manager", manager);
+		return mv;		
 		
-		List<Manager> listManager = serviceManager.listAll();
-		model.addAttribute("listManager", listManager);
-		
-		List<Speaker> listSpeaker = speakerManager.listAll();
-		model.addAttribute("listSpeaker", listSpeaker);
-		
-		return "/admin/home";
-	}
+    }
 	
-} 
+	
+}

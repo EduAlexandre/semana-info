@@ -35,6 +35,6 @@ public class ManagerController {
 		
 		managerService.delete(idManager);
 		
-		return "redirect:/admin";
+		return "redirect:/admin/novo";
 	}
 }

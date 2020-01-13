@@ -17,9 +17,6 @@ public class AdminService {
 	
 	
 	public void save(Admin admin) {
-		
-		admin.setPermission(4);
-		
 		repository.save(admin);
 	}
 	

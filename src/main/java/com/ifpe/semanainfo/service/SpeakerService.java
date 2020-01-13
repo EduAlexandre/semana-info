@@ -33,7 +33,7 @@ public class SpeakerService {
 		
 		speaker.setPassword(newSenha);
 		
-		speaker.setPermission(2);
+		speaker.setPermision(2);
 		
 		speaks.save(speaker);
 	}

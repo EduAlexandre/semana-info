@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ifpe.semanainfo.email.MailerManager;
 import com.ifpe.semanainfo.email.MailerSpeaker;
 import com.ifpe.semanainfo.model.Manager;
 import com.ifpe.semanainfo.model.Speaker;
@@ -22,9 +21,6 @@ public class EmailsController {
 	private SpeakerService speakerService;
 	
 	@Autowired
-	private MailerManager mailManager;
-	
-	@Autowired
 	private MailerSpeaker mailSpeaker;
 	
 	@PostMapping("/emailManager")
@@ -32,9 +28,7 @@ public class EmailsController {
 		
 		managerService.save(manager);
 		
-		mailManager.enviar(manager);
-		
-		return "redirect:/admin";
+		return "redirect:/admin/novo";
 	}
 	
 	@PostMapping("/emailSpeaker")
