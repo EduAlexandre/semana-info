@@ -15,7 +15,7 @@ import com.ifpe.semanainfo.service.ParticipantService;
 @Controller
 public class ParticipantController {
 
-		@Autowired
+		@Autowired 
 		private ParticipantService participantservice;
 		
 		@GetMapping("/cadParticipant")
