@@ -12,4 +12,12 @@ public class Pages {
 		return "index";
 	}
 	
+	
+	@GetMapping("/Cadastre-se")
+	public String cad() {
+		return "cadastro_alu";
+	}
+	
+	
+	
 }

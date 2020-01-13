@@ -7,15 +7,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ifpe.semanainfo.model.Admin;
 import com.ifpe.semanainfo.model.Manager;
-import com.ifpe.semanainfo.repository.GroupsRepository;
 import com.ifpe.semanainfo.service.ManagerService;
 import com.ifpe.semanainfo.service.SpeakerService;
 
 @Controller
 public class AdminController {
 
-	@Autowired
-	private GroupsRepository groupRepository;
 	
 	@Autowired
 	private ManagerService serviceManager;
