@@ -14,7 +14,7 @@ public class Pages {
 	
 	
 	@GetMapping("/Cadastre-se")
-	public String cad() {
+	public String cad() { 
 		return "cadastro_alu";
 	}
 	
