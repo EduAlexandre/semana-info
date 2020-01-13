@@ -14,7 +14,7 @@ import com.ifpe.semanainfo.repository.ParticipantDAO;
 public class ParticipantService {
 	
 	@Autowired
-	private ParticipantDAO repository; 
+	private ParticipantDAO repository;  
 	
 	public void save(Participant participant) {
 		
