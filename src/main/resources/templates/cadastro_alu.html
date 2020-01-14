@@ -3,17 +3,13 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-     <link rel="stylesheet" type="text/css" th:href="@{assets/css/cadastro.css}">
-        <link rel="stylesheet" type="text/css"  th:href="@{assets/css/index.css}">
-    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+	     	<link rel="stylesheet" type="text/css" th:href="@{assets/css/cadastro.css}">
+	        <link rel="stylesheet" type="text/css"  th:href="@{assets/css/index.css}">
+    		<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  			<link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
+   			 <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
 
 
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Cadastro</title>
 </head>
 
@@ -71,6 +67,9 @@
                             <br><label class="sen" for="senha">Senha</label><br>
                         
                             <input type="password" name="password" placeholder="senha" class="inp" th:field="*{password}"><br><br>
+                            
+                            <label class="sen" for="senha">Confirme sua senha</label><br>
+                            <input type="password" name="password" placeholder="Confirme sua senha" class="inp" th:field="*{password}"><br><br>
                             
                             <select th:field="*{groups}" style="opacity: 0">
 				            	<option th:value="${groups.id}" th:text="${groups.nome}"></option>

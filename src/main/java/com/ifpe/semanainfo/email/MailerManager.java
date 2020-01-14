@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import com.ifpe.semanainfo.model.Manager;
 import com.ifpe.semanainfo.model.UserModel;
 
 
@@ -53,4 +54,5 @@ public class MailerManager {
 		
 	  
 	}
+
 }

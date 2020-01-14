@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ifpe.semanainfo.email.MailerManager;
 import com.ifpe.semanainfo.helper.GeneratePassword;
 import com.ifpe.semanainfo.model.Manager;
+import com.ifpe.semanainfo.model.UserModel;
 import com.ifpe.semanainfo.repository.ManagerRepository;
 import com.ifpe.semanainfo.util.PasswordGenerate;
 
@@ -26,7 +27,7 @@ public class ManagerService {
 	private MailerManager mailManager;
 	
 	
-	public void save(Manager manager) {
+	public void save(UserModel manager) {
 		
 		//variaveis para geração de senha
 		String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -35,17 +36,7 @@ public class ManagerService {
 		Integer len = 6;
 
 		String newSenha = PasswordGenerate.generatePassword(len, ALPHA_CAPS + ALPHA + NUMERIC);
-		
-		manager.setSenha(newSenha);
-		mailManager.enviar(manager);
-		
-		String newSenhaCrip = GeneratePassword.cripto(newSenha);
-		
-		manager.setSenha(newSenhaCrip);
-		
-		manager.setPermision(3);
-		
-		repository.save(manager);
+	
 	}
 	
 	public List<Manager> listAll(){

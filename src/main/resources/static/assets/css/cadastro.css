@@ -77,6 +77,8 @@ padding: 20px;
 }
 
 body {
+	width: 100%;
+	height: 100%;
     background-color: grey;
     background-image: url("teste1.png");
     background-repeat: no-repeat;
@@ -89,6 +91,7 @@ body {
 
 .container {
     width: 100%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px;
