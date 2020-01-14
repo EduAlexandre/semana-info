@@ -49,8 +49,28 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()	
+				//ROTAS DE USUARIO
+			    .antMatchers("/cadastro").permitAll()
+			    .antMatchers("/emailUser").permitAll()
+			    .antMatchers("/usuarios/participante/**").permitAll()
+			    .antMatchers("/usuarios").permitAll()
+			    .antMatchers("/user").hasRole("LISTAR_PALESTRA")
+			    
+				//ROTAS DE ADMIN
 			    .antMatchers("/admin/novo").hasRole("CADASTRAR_GESTOR")
 			    .antMatchers("/admin").hasRole("LISTAR_GESTOR")
+			    
+			    //ROTAS DE GESTOR
+			    .antMatchers("/palestrante/novo").hasRole("CADASTRAR_PALESTRANTE")
+			    .antMatchers("/palestrante").hasRole("LISTAR_PALESTRANTE")
+			    .antMatchers("/palestra/nova").hasRole("CADASTRAR_PALESTRA")
+			    .antMatchers("/palestra").hasRole("LISTAR_PALESTRA")
+			    .antMatchers("/palestrante/**").hasRole("ATUALIZAR_STATUS")
+			    
+			    
+			    //ROTAS DE PALESTRANTE
+
+			    
 				.anyRequest().authenticated()	
 			    //.anyRequest().denyAll()
 				.and()

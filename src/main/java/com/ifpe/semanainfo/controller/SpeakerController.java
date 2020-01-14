@@ -14,8 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ifpe.semanainfo.email.EmailIsPresentException;
-import com.ifpe.semanainfo.model.Speaker;
-import com.ifpe.semanainfo.repository.Speaks;
+import com.ifpe.semanainfo.model.UserModel;
 import com.ifpe.semanainfo.service.SpeakerService;
 
 
@@ -25,26 +24,22 @@ public class SpeakerController {
 	
 	@Autowired
 	private SpeakerService speakerService;
-	
-	@Autowired
-	private Speaks speaks;
 
 	
 	@RequestMapping("/novo")
-	public ModelAndView newSpeaker(Speaker speaker) {
+	public ModelAndView newSpeaker(UserModel  speaker) {
 	  ModelAndView mv = new ModelAndView("speaker/RegisterSpeaker");	
 	  return mv;	
 	}
 	
 	@RequestMapping(value = { "/novo", "{\\d+}" }, method = RequestMethod.POST)
-	public ModelAndView register(@Valid Speaker speaker, BindingResult result, Model model, RedirectAttributes attributes) {
+	public ModelAndView register(@Valid UserModel speaker, BindingResult result, Model model, RedirectAttributes attributes) {
 		
 		if(result.hasErrors()) {			
 		   return newSpeaker(speaker);	
 		}
 		
-		try {
-			speakerService.register(speaker);	
+		try {	
 		} catch (EmailIsPresentException e) {
 			result.rejectValue("email", e.getMessage(), e.getMessage());
 			return newSpeaker(speaker);	
@@ -55,27 +50,20 @@ public class SpeakerController {
 		return new ModelAndView("redirect:/palestrante/novo");
 	}
 	
-	@GetMapping
-	public ModelAndView listSpeakes() {
-		ModelAndView mv = new ModelAndView("speaker/searchSpeakers");
-		mv.addObject("list", speaks.findAll());
-		return mv;
-	}
-	
-	@GetMapping("/{cod}")
-	public ModelAndView edit(@PathVariable("cod") Speaker speaker) {
-		ModelAndView mv = newSpeaker(speaker);
-		mv.addObject(speaker);		
-		return mv;
-	}
-	
-	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable("id") Integer id) {
-		
-		speakerService.delete(id);
-		
-		return "redirect:/admin";
-	}
+//	@GetMapping("/{cod}")
+//	public ModelAndView edit(@PathVariable("cod") Speaker speaker) {
+//		ModelAndView mv = newSpeaker(speaker);
+//		mv.addObject(speaker);		
+//		return mv;
+//	}
+//	
+//	@GetMapping("/delete/{id}")
+//	public String delete(@PathVariable("id") Integer id) {
+//		
+//		speakerService.delete(id);
+//		
+//		return "redirect:/admin";
+//	}
 	
 	
 	

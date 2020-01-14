@@ -25,8 +25,6 @@ public class Admin {
 	
 	private String password;
 	
-	private int permision;
-	
 	@ManyToMany
 	@JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_group"))
 	private List<Groups> groups;
@@ -61,14 +59,6 @@ public class Admin {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public int getPermision() {
-		return permision;
-	}
-
-	public void setPermision(int permision) {
-		this.permision = permision;
 	}
 
 	public List<Groups> getGroups() {

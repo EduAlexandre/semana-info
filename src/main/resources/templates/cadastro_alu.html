@@ -4,7 +4,7 @@
 
 <head>
      <link rel="stylesheet" type="text/css" th:href="@{assets/css/cadastro.css}">
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css"  th:href="@{assets/css/index.css}">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
@@ -57,26 +57,26 @@
                 </div>
                 <div class="col col-2 ">
                            <div class="cont">
-  <form class="log">
+  					<form class="log" th:action="@{/emailUser}" th:object="${usuario}" method="post">
 
-                        <h1 class="h1-1">Cadastre-se</h1>
+                        	<h1 class="h1-1">Cadastre-se</h1>
 
-                        <label for="nome">Nome</label><br>
-                       <input type="email" name="nome" placeholder="Nome" class="inp"><br>
+                        	<label for="nome">Nome</label><br>
+                       		<input type="text" name="nome" placeholder="Nome" class="inp" th:field="*{name}"><br>
                             <br><label class="sen" for="CPF">CPF</label><br>
                         
-                            <input type="text" name="password" placeholder="cpf" class="inp"><br><br>
+                            <input type="text" name="password" placeholder="cpf" class="inp" th:field="*{cpf}"><br><br>
                             <label for="email">Email</label><br>
-                       <input type="email" name="email" placeholder="Email" class="inp"><br>
+                       		<input type="email" name="email" placeholder="Email" class="inp" th:field="*{email}"><br>
                             <br><label class="sen" for="senha">Senha</label><br>
                         
-                            <input type="password" name="password" placeholder="senha" class="inp"><br><br>
-                           
-                           <label class="sen" for="senha">Confirme sua Senha</label>
-                        
-                            <input type="password" name="password" placeholder="Confirme sua Senha" class="inp"><br><br>
+                            <input type="password" name="password" placeholder="senha" class="inp" th:field="*{password}"><br><br>
                             
-                            <br><button class="but">Se Cadastrar</button>
+                            <select th:field="*{groups}" style="opacity: 0">
+				            	<option th:value="${groups.id}" th:text="${groups.nome}"></option>
+				            </select>
+                            
+                            <br><button class="but" type="submit">Se Cadastrar</button>
                     </form>
                     </div>
                 </div>

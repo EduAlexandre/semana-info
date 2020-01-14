@@ -27,8 +27,6 @@ public class Participant {
 	
 	private String hashCode;
 	
-	private int permision;
-	
 	@ManyToMany
 	@JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_group"))
 	private List<Groups> groups;
@@ -79,14 +77,6 @@ public class Participant {
 
 	public void setHashCode(String hashCode) {
 		this.hashCode = hashCode;
-	}
-
-	public int getPermision() {
-		return permision;
-	}
-
-	public void setPermision(int permision) {
-		this.permision = permision;
 	}
 
 	public List<Groups> getGroups() {

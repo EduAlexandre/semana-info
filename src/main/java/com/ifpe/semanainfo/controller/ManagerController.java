@@ -8,23 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.ifpe.semanainfo.model.Speaker;
-import com.ifpe.semanainfo.service.ManagerService;
+import com.ifpe.semanainfo.model.UserModel;
 
 
 
 
 @Controller
 public class ManagerController {
-
-	
-	@Autowired
-	private ManagerService managerService;
 	
 	@GetMapping("/manager")
 	public String showHome(Model model) {
 		
-		Speaker speaker = new Speaker();
+		UserModel speaker = new UserModel();
 		model.addAttribute("speaker", speaker);
 		
 		return "/manager/home";
@@ -33,7 +28,6 @@ public class ManagerController {
 	@GetMapping("/deleteM/{idManager}")
 	public String delete(@PathVariable("idManager") Integer idManager) {
 		
-		managerService.delete(idManager);
 		
 		return "redirect:/admin/novo";
 	}

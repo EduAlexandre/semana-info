@@ -6,38 +6,43 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ifpe.semanainfo.email.MailerSpeaker;
-import com.ifpe.semanainfo.model.Manager;
-import com.ifpe.semanainfo.model.Speaker;
-import com.ifpe.semanainfo.service.ManagerService;
+import com.ifpe.semanainfo.model.UserModel;
+import com.ifpe.semanainfo.service.AdminService;
 import com.ifpe.semanainfo.service.SpeakerService;
 
 @Controller
 public class EmailsController {
 	
 	@Autowired
-	private ManagerService managerService;
+	private SpeakerService speakerService;
 	
 	@Autowired
-	private SpeakerService speakerService;
+	private AdminService  adminService;
 	
 	@Autowired
 	private MailerSpeaker mailSpeaker;
 	
 	@PostMapping("/emailManager")
-	public String envMail(Manager manager,RedirectAttributes ra) {
-		
-		managerService.save(manager);
+	public String envMailManager(UserModel manager,RedirectAttributes ra) {
 		
 		return "redirect:/admin/novo";
 	}
 	
 	@PostMapping("/emailSpeaker")
-	public String envMail(Speaker speaker,RedirectAttributes ra) {
+	public String envMailSpeaker(UserModel speaker,RedirectAttributes ra) {
 		
 		speakerService.save(speaker);
 		
 		mailSpeaker.enviar(speaker);
 		
-		return "redirect:/admin";
+		return "redirect:/manager";
+	}
+	
+	@PostMapping("/emailUser")
+	public String envMailUser(UserModel user,RedirectAttributes ra) {
+		
+		adminService.saveUser(user);
+		
+		return "redirect:/login";
 	}
 }

@@ -22,17 +22,18 @@ public class UserModel {
 	@NotBlank
 	private String name;
 	
+	@Column(length = 20)
+	private String cpf;
+	
 	@NotBlank
 	@Column(unique = true)
 	private String email;
+
 	
-	@NotBlank
 	private String password;
 	
 	private int codGrup;
-	
-	
-	@NotBlank
+
 	private boolean active;
 	
 	@ManyToMany
@@ -87,8 +88,14 @@ public class UserModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	public boolean isActive() {
 		return active;

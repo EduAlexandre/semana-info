@@ -6,30 +6,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ifpe.semanainfo.model.Admin;
-import com.ifpe.semanainfo.model.Manager;
-import com.ifpe.semanainfo.service.ManagerService;
+import com.ifpe.semanainfo.model.UserModel;
+import com.ifpe.semanainfo.repository.GroupsRepository;
 import com.ifpe.semanainfo.service.SpeakerService;
 
 @Controller
 public class AdminController {
 
-	
-	@Autowired
-	private ManagerService serviceManager;
-	
 	@Autowired
 	private SpeakerService serviceSpeaker;
+	
+	@Autowired
+	private GroupsRepository groupRepository;
 		
 	@GetMapping("/admin/novo")
 	public ModelAndView add(Admin admin) {
 		ModelAndView mv = new ModelAndView("admin/home");
-		//mv.addObject("groups", groupRepository.findAll());
+		mv.addObject("groups", groupRepository.findAll());
 		
-		mv.addObject("listManager", serviceManager.listAll());
-		
-		mv.addObject("listSpeaker", serviceSpeaker.listAll());
-		
-		Manager manager = new Manager();
+		UserModel manager = new UserModel();
 		mv.addObject("manager", manager);
 		return mv;		
 		

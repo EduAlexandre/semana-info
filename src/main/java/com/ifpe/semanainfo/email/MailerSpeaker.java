@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import com.ifpe.semanainfo.model.Speaker;
+import com.ifpe.semanainfo.model.UserModel;
 
 
 
@@ -25,7 +25,7 @@ public class MailerSpeaker {
 	private TemplateEngine thymeleaf;
 	
 	@Async
-	public void enviar(Speaker speaker){
+	public void enviar(UserModel speaker){
 	   
 		Context context =  new Context();
 	    context.setVariable("ag", speaker);	

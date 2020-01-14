@@ -16,9 +16,6 @@ public class Activity {
 	private int amountVacancies;
 	
 	@OneToOne
-	private Speaker speaker;
-	
-	@OneToOne
 	private Room room;
 	public Integer getId() {
 		return id;
@@ -37,12 +34,6 @@ public class Activity {
 	}
 	public void setAmountVacancies(int amountVacancies) {
 		this.amountVacancies = amountVacancies;
-	}
-	public Speaker getSpeaker() {
-		return speaker;
-	}
-	public void setSpeaker(Speaker speaker) {
-		this.speaker = speaker;
 	}
 	public Room getRoom() {
 		return room;

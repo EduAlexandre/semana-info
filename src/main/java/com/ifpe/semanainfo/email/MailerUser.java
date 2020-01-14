@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import com.ifpe.semanainfo.model.Manager;
+import com.ifpe.semanainfo.model.UserModel;
 
 
 
@@ -25,7 +25,7 @@ public class MailerUser {
 	private TemplateEngine thymeleaf;
 	
 	@Async
-	public void enviar(Manager usuario){
+	public void enviar(UserModel usuario){
 	   
 		Context context =  new Context();
 	    context.setVariable("ag", usuario);	
@@ -33,7 +33,7 @@ public class MailerUser {
 	   MimeMessage minMessage = mailSender.createMimeMessage();
 	   
 	   try {
-		   String email = thymeleaf.process("email/EmailRecuperacao", context);
+		   String email = thymeleaf.process("email/emailUser", context);
 		MimeMessageHelper helper = new MimeMessageHelper(minMessage, true, "UTF-8");
 		helper.setFrom("besoftware9@gmail.com");
 		helper.setTo(usuario.getEmail());

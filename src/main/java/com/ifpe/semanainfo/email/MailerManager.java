@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import com.ifpe.semanainfo.model.Manager;
+import com.ifpe.semanainfo.model.UserModel;
 
 
 
@@ -29,7 +29,7 @@ public class MailerManager {
 	private TemplateEngine thymeleaf;
 	
 	@Async
-	public void enviar(Manager manager){
+	public void enviar(UserModel manager){
 	   
 		Context context =  new Context();
 	    context.setVariable("ag", manager);	

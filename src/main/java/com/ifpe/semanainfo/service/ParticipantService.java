@@ -21,8 +21,6 @@ public class ParticipantService {
 		//set a hash for participant
 		String hashCode = UUID.randomUUID().toString();
 		participant.setHashCode(hashCode);
-		
-		participant.setPermision(1);
 		 
 		repository.save(participant);
 		}

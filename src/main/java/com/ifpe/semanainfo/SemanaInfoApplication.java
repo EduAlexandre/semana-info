@@ -8,6 +8,7 @@ public class SemanaInfoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SemanaInfoApplication.class, args);
+		
 	}
 
 }
