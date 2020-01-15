@@ -52,9 +52,10 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 				//ROTAS DE USUARIO
 			    .antMatchers("/cadastro").permitAll()
 			    .antMatchers("/emailUser").permitAll()
-			    .antMatchers("/usuarios/participante/**").hasRole("ATUALIZAR_STATUS")
+			    .antMatchers("/usuarios/participante/**").permitAll()
 			    .antMatchers("/usuarios").permitAll()
 			    .antMatchers("/user").hasRole("LISTAR_PALESTRA")
+			    .antMatchers("/recuperar").permitAll()
 			    
 				//ROTAS DE ADMIN
 			    .antMatchers("/admin/novo").hasRole("CADASTRAR_GESTOR")

@@ -110,7 +110,7 @@ h1 {
 
 body { background-color: #f1f1f1;
   margin: 0;
- background-image: url("teste1.png");
+ background-image: url("../img/teste1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: all;

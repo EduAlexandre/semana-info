@@ -31,4 +31,10 @@ public class UsuarioContoller {
 		
 		return "/user/home";
 	}
+	
+	@GetMapping("/recuperar")
+	public String showRe() {
+		
+		return "/RecuperarSenha";
+	}
 }
