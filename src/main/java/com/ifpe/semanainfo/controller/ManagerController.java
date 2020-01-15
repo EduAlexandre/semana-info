@@ -23,13 +23,20 @@ public class ManagerController {
 	@GetMapping("/manager")
 	public String showHome(Model model) {
 		
+		return "/manager/home";
+	}
+	
+	@GetMapping("/palestrante/novo")
+	public String cadPales(Model model) {
+		
 		UserModel speaker = new UserModel();
 		model.addAttribute("speaker", speaker);
 		
 		Groups groups = groupService.get(3L);
 		model.addAttribute("groups", groups);
 		
-		return "/manager/home";
+		return "/manager/cadGestor";
+		
 	}
 	
 }

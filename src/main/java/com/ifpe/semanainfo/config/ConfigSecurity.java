@@ -68,10 +68,10 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/palestra").hasRole("LISTAR_PALESTRA")
 			    .antMatchers("/usuarios/palestrante/**").hasRole("ATUALIZAR_STATUS")
 			    
-			    
 			    //ROTAS DE PALESTRANTE
 			    .antMatchers("/emailSpeaker").permitAll()
 			    .antMatchers("/usuarios/palestrante/**").hasRole("ATUALIZAR_STATUS")
+			    
 			    
 				.anyRequest().authenticated()	
 			    //.anyRequest().denyAll()

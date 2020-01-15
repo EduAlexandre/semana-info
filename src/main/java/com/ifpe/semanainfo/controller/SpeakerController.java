@@ -15,5 +15,6 @@ public class SpeakerController {
 		
 		return "/speaker/home";
 	}
+
 	
 }
