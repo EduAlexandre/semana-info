@@ -52,24 +52,26 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 				//ROTAS DE USUARIO
 			    .antMatchers("/cadastro").permitAll()
 			    .antMatchers("/emailUser").permitAll()
-			    .antMatchers("/usuarios/participante/**").permitAll()
+			    .antMatchers("/usuarios/participante/**").hasRole("ATUALIZAR_STATUS")
 			    .antMatchers("/usuarios").permitAll()
 			    .antMatchers("/user").hasRole("LISTAR_PALESTRA")
 			    
 				//ROTAS DE ADMIN
 			    .antMatchers("/admin/novo").hasRole("CADASTRAR_GESTOR")
 			    .antMatchers("/admin").hasRole("LISTAR_GESTOR")
+			    .antMatchers("/usuarios/gestor/**").permitAll()
 			    
 			    //ROTAS DE GESTOR
 			    .antMatchers("/palestrante/novo").hasRole("CADASTRAR_PALESTRANTE")
 			    .antMatchers("/palestrante").hasRole("LISTAR_PALESTRANTE")
 			    .antMatchers("/palestra/nova").hasRole("CADASTRAR_PALESTRA")
 			    .antMatchers("/palestra").hasRole("LISTAR_PALESTRA")
-			    .antMatchers("/palestrante/**").hasRole("ATUALIZAR_STATUS")
+			    .antMatchers("/usuarios/palestrante/**").hasRole("ATUALIZAR_STATUS")
 			    
 			    
 			    //ROTAS DE PALESTRANTE
-
+			    .antMatchers("/emailSpeaker").permitAll()
+			    .antMatchers("/usuarios/palestrante/**").hasRole("ATUALIZAR_STATUS")
 			    
 				.anyRequest().authenticated()	
 			    //.anyRequest().denyAll()

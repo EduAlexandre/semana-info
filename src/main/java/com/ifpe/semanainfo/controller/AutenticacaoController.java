@@ -18,17 +18,44 @@ public class AutenticacaoController {
 	private AdminService serviceAdmin;
 	
 	@GetMapping("/confirmacao/{id}")
-	public String authUsuario(@PathVariable Long id, UserModel manager,Model model) {
+	public String authUsuario(@PathVariable Long id,Model model) {
 		
 		
 		return "/login";
 	}
 	
-	@GetMapping("/participante/{id}")
-	public String authUsuario1(@PathVariable Long id) {
+	@GetMapping("/gestor/{id}")
+	public String authManager(@PathVariable Long id) {
 		
 		if(id != null) {
-			UserModel user = serviceAdmin.searchGetUser(id);
+			UserModel manager = serviceAdmin.searchAndPickAUser(id); 
+			
+			serviceAdmin.updateStatus(manager);
+			
+			return "redirect:/login";
+		}
+		
+		return "redirect:/login";
+	}
+	
+	@GetMapping("/palestrante/{id}")
+	public String authSpeaker(@PathVariable Long id) {
+		
+		if(id != null) {
+			UserModel speaker = serviceAdmin.searchAndPickAUser(id); 
+			
+			serviceAdmin.updateStatus(speaker);
+			
+			return "redirect:/login";
+		}
+		return "redirect:/login";
+	}
+	
+	@GetMapping("/participante/{id}")
+	public String authUsuario(@PathVariable Long id) {
+		
+		if(id != null) {
+			UserModel user = serviceAdmin.searchAndPickAUser(id); 
 			
 			serviceAdmin.updateStatus(user);
 			
@@ -36,5 +63,7 @@ public class AutenticacaoController {
 		}
 		return "redirect:/cadastro";
 	}
+	
+	
 	
 }

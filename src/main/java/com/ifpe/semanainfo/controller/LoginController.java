@@ -21,7 +21,7 @@ public class LoginController {
 			   return "redirect:/manager";
 		   }
 		   if(user.getUserModel().getCodGrup() == 3) {
-			   return "redirect:/admin/novo";
+			   return "redirect:/speaker";
 		   }
 		   if(user.getUserModel().getCodGrup() == 4) {
 			   return "redirect:/user";

@@ -6,19 +6,25 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<a href="/logout">Sair</a>
 	<h1>HOME MANAGER</h1>
 	
 	<form class="log" th:action="@{/emailSpeaker}" th:object="${speaker}" method="post">
 
-       	<h1 class="h1-1">Enviar cadastro para os Gestores</h1>
+       	<h1 class="h1">Enviar cadastro para os Gestores</h1>
 
 		<label>Nome</label><br>
-        <input type="text" placeholder="Nome" class="inp" th:field="*{speakName}"><br>
+        <input type="text" placeholder="Nome" th:field="*{name}"><br>
 
         <label>Email</label><br>
-        <input type="email" placeholder="Email" class="inp" th:field="*{email}"><br>
+        <input type="email" placeholder="Email" th:field="*{email}"><br>
+        
+        <select th:field="*{groups}" style="opacity: 0">
+        	<option th:value="${groups.id}" th:text="${groups.nome}"></option>
+        </select>
             
-        <br><button class="but" type="submit">Acessar</button>
+        <br><button class="but" type="submit">Enviar</button>
      </form>
 </body>
 </html>

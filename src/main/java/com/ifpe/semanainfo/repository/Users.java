@@ -15,6 +15,9 @@ public interface Users extends JpaRepository<UserModel, Long>, UsersQueries {
 
 	@Query(value =  "select * from user_model where id = ?1", nativeQuery = true)
 	public UserModel searchingManager(Long id);
+
+	@Query(value =  "select * from user_model where cod_grup = ?1", nativeQuery = true)
+	public UserModel takeTheCode(int codGroup);
 	
 	
 	

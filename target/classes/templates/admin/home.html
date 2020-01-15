@@ -8,6 +8,26 @@
 <body>
 	
 	<a href="/logout">Sair</a>
+	
+	<h1 class="h1-1">Lista de Admins</h1>
+	<label>Manages</label>
+	<table border="1">
+	    <tr>
+	        <td>Nome</td>
+	        <td>Email</td>
+	        <td>Hash-Code</td>
+	        <td>Actions</td>
+	    </tr>
+	    <tr th:each="list : ${listAdmins}">
+	        <td th:text="${list.name}"></td>
+	        <td th:text="${list.email}"></td>
+	        <td th:text="${list.password}"></td>
+	        <td><a th:href="|/deleteM/${list.id}|">Delete</a></td>
+	    </tr>
+	</table>
+	
+	<br>
+	<br>
 	<h1 class="h1-1">Lista de Gestores</h1>
 	<label>Manages</label>
 	<table border="1">
@@ -17,11 +37,49 @@
 	        <td>Hash-Code</td>
 	        <td>Actions</td>
 	    </tr>
-	    <tr th:each="list : ${listManager}">
+	    <tr th:each="list : ${listManagers}">
 	        <td th:text="${list.name}"></td>
 	        <td th:text="${list.email}"></td>
 	        <td th:text="${list.password}"></td>
-	        <td><a th:href="|/deleteM/${list.idManager}|">Delete</a></td>
+	        <td><a th:href="|/deleteAUser/${list.id}|">Delete</a></td>
+	    </tr>
+	</table>
+	<br>
+	<br>
+	
+	<h1 class="h1-1">Lista de Palestrantes</h1>
+	<label>Manages</label>
+	<table border="1">
+	    <tr>
+	        <td>Nome</td>
+	        <td>Email</td>
+	        <td>Hash-Code</td>
+	        <td>Actions</td>
+	    </tr>
+	    <tr th:each="list : ${listSpeakes}">
+	        <td th:text="${list.name}"></td>
+	        <td th:text="${list.email}"></td>
+	        <td th:text="${list.password}"></td>
+	        <td><a th:href="|/deleteAUser/${list.id}|">Delete</a></td>
+	    </tr>
+	</table>	
+	<br>
+	<br>
+	
+	<h1 class="h1-1">Lista de Usuarios</h1>
+	<label>Manages</label>
+	<table border="1">
+	    <tr>
+	        <td>Nome</td>
+	        <td>Email</td>
+	        <td>Hash-Code</td>
+	        <td>Actions</td>
+	    </tr>
+	    <tr th:each="list : ${listUsers}">
+	        <td th:text="${list.name}"></td>
+	        <td th:text="${list.email}"></td>
+	        <td th:text="${list.password}"></td>
+	        <td><a th:href="|/deleteAUser/${list.id}|">Delete</a></td>
 	    </tr>
 	</table>
 	

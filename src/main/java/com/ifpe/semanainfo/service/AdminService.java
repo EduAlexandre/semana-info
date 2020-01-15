@@ -1,21 +1,18 @@
 package com.ifpe.semanainfo.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ifpe.semanainfo.email.MailerManager;
+import com.ifpe.semanainfo.email.MailerSpeaker;
 import com.ifpe.semanainfo.email.MailerUser;
 import com.ifpe.semanainfo.helper.GeneratePassword;
 import com.ifpe.semanainfo.model.Admin;
-import com.ifpe.semanainfo.model.Groups;
 import com.ifpe.semanainfo.model.UserModel;
 import com.ifpe.semanainfo.repository.AdminRepository;
 import com.ifpe.semanainfo.repository.Users;
-import com.ifpe.semanainfo.util.PasswordGenerate;
 
 
 @Service
@@ -31,21 +28,20 @@ public class AdminService {
 	private MailerManager mailManager;
 	
 	@Autowired
+	private MailerSpeaker mailSpeaker;
+	
+	@Autowired
 	private MailerUser mailUser;
 	
 	public void save(Admin admin) {
 		repository.save(admin);	
 	}
+	
+	
 	//GESTOR
 	public void saveManager(UserModel manager) {
-		
-		//variaveis para geração de senha
-		String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	    String ALPHA = "abcdefghijklmnopqrstuvwxyz";
-	    String NUMERIC = "0123456789";
-		Integer len = 6;
 
-		String newSenha = PasswordGenerate.generatePassword(len, ALPHA_CAPS + ALPHA + NUMERIC);
+		String newSenha = GeneratePassword.generatePass();
 		
 		String newSenhaCrip = GeneratePassword.cripto(newSenha);
 		manager.setPassword(newSenhaCrip);
@@ -59,13 +55,8 @@ public class AdminService {
 		mailManager.enviar(manager);
 	}
 	
-	public UserModel searchingManager(Long id) {
-		return repositoryUser.searchingManager(id);
-	}
-	
 	//USUARIO
 	public void saveUser(UserModel user) {
-		
 		
 		user.setActive(false);
 		user.setCodGrup(4);
@@ -78,14 +69,24 @@ public class AdminService {
 		mailUser.enviar(user);
 	}
 	
-	public UserModel searchGetUser(Long id) {
-		return repositoryUser.findById(id).get();
+	//PALESTRANTE
+	public void saveSpeaker(UserModel speaker) {
+
+		String newSenha = GeneratePassword.generatePass();
+		
+		String newSenhaCrip = GeneratePassword.cripto(newSenha);
+		speaker.setPassword(newSenhaCrip);
+		speaker.setActive(false);
+		speaker.setCodGrup(3);
+		speaker.setCpf("Não informado");
+		
+		repositoryUser.save(speaker);
+		
+		speaker.setPassword(newSenha);
+		mailSpeaker.enviar(speaker);
 	}
 	
-	public void updateStatus(UserModel user) {
-		user.setActive(true);
-		repositoryUser.saveAndFlush(user);
-	}
+	//ADMIN
 	
 	public List<Admin> listAll(){
 		return repository.findAll();
@@ -95,12 +96,27 @@ public class AdminService {
 		return repository.findById(idAdmin).get();
 	}
 	
-	public Admin sarchingAdmin(String email , String senha) {
-		return repository.sarchingAdmin(email, senha);
+	public void delete(Integer id) {
+		repository.deleteById(id);
 	}
 	
-	public void delete(Integer idAdmin) {
-		repository.deleteById(idAdmin);
+	//TODOS
+	
+	public void updateStatus(UserModel all) {
+		all.setActive(true);
+		repositoryUser.saveAndFlush(all);
+	}
+	
+	public UserModel searchAndPickAUser(Long id) {
+		return repositoryUser.findById(id).get();
+	}
+	
+	public void deleteOneUser(Long id) {
+		repositoryUser.deleteById(id);
+	}
+
+	public UserModel pickUpSomeSpecificGroup(int codGroup) {
+		return repositoryUser.takeTheCode(codGroup);
 	}
 	
 }
