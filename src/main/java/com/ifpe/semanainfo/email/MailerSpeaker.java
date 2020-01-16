@@ -35,9 +35,9 @@ public class MailerSpeaker {
 	   try {
 		   String email = thymeleaf.process("email/emailSpeaker", context);
 		MimeMessageHelper helper = new MimeMessageHelper(minMessage, true, "UTF-8");
-		helper.setFrom("besoftware9@gmail.com");
+		helper.setFrom("ttvents@gmail.com");
 		helper.setTo(speaker.getEmail());
-		helper.setSubject("besoftware- Confirme seu cadastro.");
+		helper.setSubject("TT's EVENTS - Obrigado pela preferência.");
 		helper.setText(email, true);
 		
 	

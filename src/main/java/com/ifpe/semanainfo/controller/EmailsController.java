@@ -31,9 +31,10 @@ public class EmailsController {
 	}
 	
 	@PostMapping("/emailUser")
-	public String envMailUser(UserModel user,RedirectAttributes ra) {
+	public String envMailUser(UserModel user ,RedirectAttributes ra) {
 		
 		adminService.saveUser(user);
+		ra.addFlashAttribute("mensagemErro", "4");
 		
 		return "redirect:/login";
 	}

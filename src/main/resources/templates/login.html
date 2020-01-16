@@ -8,10 +8,10 @@
     <title>Login</title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<!-- CDN das Mensagens -->
-  	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  
+    
+    <!-- CDN das Mensagens -->
+	  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   	<script>
         $(document).ready(function(){
             $('#signUp').click(function(){
@@ -29,7 +29,7 @@
            		"debug": false,
            		"newestOnTop": false,
            		"progressBar": true,
-           		"positionClass": "toast-bottom-left",
+           		"positionClass": "toast-top-center",
            		"preventDuplicates": true,
            		"onclick": null,
            		"showDuration": "200",
@@ -55,7 +55,10 @@
             case "3":
             	toastr.warning("Acesso negado");
             	break;
-            }
+	        case "4":
+	        	toastr.warning("Conta criada com sucesso verifique seu email e confirme sua conta!");
+	        	break;
+	        }
         });
   	</script>
 </head>
@@ -80,7 +83,7 @@
                 <div class="col col-2 ">
                            <div class="cont">
                            
-  					<form class="log" th:action="@{/login}"  method="post">
+  					<form id="log" class="log" th:action="@{/login}"  method="post">
 
                         <h1 class="h1-1">Entrar</h1>
 
@@ -99,12 +102,19 @@
                             <a class="a-1" href="/cadastro">Ainda não cadastrado ? Cadastre-se!</a><br>
                             <a class="a-1" href="/recuperar">Esqueci minha Senha</a>
                             <br><button class="but" type="submit">Acessar</button>
-                             <span id="mensagemErro"  hidden></span>
+                             <span id="mensagemErro" th:text="mensagemErro" hidden></span>
                     </form>
                     </div>
                 </div>
             </div>
         </div>
 </body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/assets/js/validacoesforms.js"></script>
 
 </html>

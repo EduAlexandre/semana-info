@@ -119,4 +119,12 @@ public class AdminService {
 		return repositoryUser.takeTheCode(codGroup);
 	}
 	
+	public UserModel verificaCPF(String cpf) {
+		return repositoryUser.findByCpf(cpf);
+	}
+	
+	public UserModel verificaEmail(String email) {
+		return repositoryUser.findByEmail(email);
+	}
+	
 }

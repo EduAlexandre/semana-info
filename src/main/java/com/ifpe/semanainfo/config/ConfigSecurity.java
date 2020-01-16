@@ -56,6 +56,8 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/usuarios").permitAll()
 			    .antMatchers("/user").hasRole("LISTAR_PALESTRA")
 			    .antMatchers("/recuperar").permitAll()
+			    .antMatchers("/verificationCPF").permitAll()
+			    .antMatchers("/verificationEmail").permitAll()
 			    
 				//ROTAS DE ADMIN
 			    .antMatchers("/admin/novo").hasRole("CADASTRAR_GESTOR")

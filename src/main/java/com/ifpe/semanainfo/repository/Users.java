@@ -18,6 +18,10 @@ public interface Users extends JpaRepository<UserModel, Long>, UsersQueries {
 
 	@Query(value =  "select * from user_model where cod_grup = ?1", nativeQuery = true)
 	public UserModel takeTheCode(int codGroup);
+
+	public UserModel findByCpf(String cpf);
+
+	public UserModel findByEmail(String email);
 	
 	
 	

@@ -9,7 +9,7 @@
   			<link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
    			 <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
 
-
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Cadastro</title>
 </head>
 
@@ -45,23 +45,24 @@
                 </div>
                 <div class="col col-2 ">
                            <div class="cont">
-  					<form class="log" th:action="@{/emailUser}" th:object="${usuario}" method="post">
+  					<form id="cadUSer" class="log" th:action="@{/emailUser}" th:object="${usuario}" method="post">
 
                         	<h1 class="h1-1">Cadastre-se</h1>
 
                         	<label for="nome">Nome</label><br>
-                       		<input type="text" name="nome" placeholder="Nome" class="inp" th:field="*{name}"><br>
-                            <br><label class="sen" for="CPF">CPF</label><br>
-                        
-                            <input type="text" name="password" placeholder="cpf" class="inp" th:field="*{cpf}"><br><br>
-                            <label for="email">Email</label><br>
-                       		<input type="email" name="email" placeholder="Email" class="inp" th:field="*{email}"><br>
-                            <br><label class="sen" for="senha">Senha</label><br>
-                        
-                            <input type="password" name="password" placeholder="senha" class="inp"><br><br>
+                       		<input type="text" placeholder="Nome" class="inp" th:field="*{name}"><br>
+                       		
+                            <br><label class="sen" for="cpf">CPF</label><br>
+                            <input type="text" id="cpf" data-mask="999.999.999-99" placeholder="cpf" class="inp" th:field="*{cpf}"><br><br>
+                            
+                            <label for="email">Informe seu melhor email</label><br>
+                       		<input type="email" id="email" placeholder="Email" class="inp" th:field="*{email}"><br>
+                       		
+                            <br><label class="sen">Senha</label><br>
+                            <input type="password" placeholder="senha" id="senha" name="senha" class="inp"><br><br>
                             
                             <label class="sen" for="senha">Confirme sua senha</label><br>
-                            <input type="password" name="password" placeholder="Confirme sua senha" class="inp" th:field="*{password}"><br><br>
+                            <input type="password" placeholder="Confirme sua senha" class="inp" th:field="*{password}"><br><br>
                             
                             <select th:field="*{groups}" style="opacity: 0">
 				            	<option th:value="${groups.id}" th:text="${groups.nome}"></option>
@@ -79,5 +80,12 @@
 
 
 </body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/assets/js/validacoesforms.js"></script>	
 
 </html>
