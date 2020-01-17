@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ifpe.semanainfo.model.Activity;
-import com.ifpe.semanainfo.model.Room;
 import com.ifpe.semanainfo.model.UserModel;
 import com.ifpe.semanainfo.service.ActivityService;
 

@@ -40,30 +40,32 @@ $(document).ready(function(){
 				cpf: true,
 				required: true,
 				minlength: 11,
-//				remote:{
-//					url: '/verificationCPF',
-//					type: "POST",
-//					data:{
-//						cpf: function()
-//	                      {
-//	                          return $('#cpf').val();
-//	                      }
-//					}
-//				}
+				remote:{
+					url: '/verificationCPF',
+					type: "get",
+					dataType: "json",
+					data:{
+						cpf: function()
+	                      {
+	                          return $('#cpf').val();
+	                      }
+					}
+				}
 			},
 			email:{
 				required: true,
-//				remote:{
-//					url: '/verificationEmail',
-//					type: "POST",
-//					data:{
-//						email: function()
-//	                      {
-//	                          return $('#email').val();
-//	                      }
-//	
-//					}
-//				}
+				remote:{
+					url: '/verificationEmail',
+					type: "get",
+					dataType: "json",
+					data:{
+						email: function()
+	                      {
+	                          return $('#email').val();
+	                      }
+	
+					}
+				}
 			},
 			senha:{
 				required: true,

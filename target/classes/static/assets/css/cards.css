@@ -5,6 +5,7 @@ body {
   font-family: "Open Sans";
   font-weight: 300;
 }
+
 h4 {
   font-family: "Open Sans";
   font-weight: 300;
@@ -13,6 +14,20 @@ p {
   font-size: 12px;
 }
 @media only screen and (max-width: 600px) {
+  .card-carousel{
+    overflow: hidden;
+    max-width: 350px;
+  }
+}
+
+@media only screen and (max-width: 910px) {
+  .card-carousel{
+    overflow: hidden;
+    max-width: 350px;
+  }
+}
+
+@media only screen and (max-width: 1110px) {
   .card-carousel{
     overflow: hidden;
     max-width: 350px;
@@ -74,6 +89,21 @@ p {
   z-index: 1;
   box-shadow: 0px 10px 10px 10px rgba(0, 54, 90, 0.15);
 }
+
+.status{
+	position: relative;
+	top: -10px;
+	right: -110px;
+	width: 40px;
+	height: 20px;
+	padding: 10px;
+	border-radius: 0px 10px 0px 10px;
+	background: #113ede;
+	opacity: 0.9; 
+	transition: 0.5s;
+}
+
+
 .card-carousel .inner-carousel > div:after {
   content: '';
   position: absolute;

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ifpe.semanainfo.model.Admin;
 import com.ifpe.semanainfo.model.UserModel;
 import com.ifpe.semanainfo.repository.GroupsRepository;
 import com.ifpe.semanainfo.service.AdminService;
@@ -22,7 +21,7 @@ public class AdminController {
 	private AdminService adminService;
 		
 	@GetMapping("/admin/novo")
-	public ModelAndView add(Admin admin) {
+	public ModelAndView add() {
 		ModelAndView mv = new ModelAndView("admin/home");
 		mv.addObject("groups", groupRepository.findAll());
 		
