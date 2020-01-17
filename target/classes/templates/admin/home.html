@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -8,6 +9,8 @@
 <body>
 	
 	<a href="/logout">Sair</a>
+	
+	<p th:text="${#authentication.principal.userModel.name}"></p>
 	
 	<h1 class="h1-1">Lista de Admins</h1>
 	<label>Manages</label>

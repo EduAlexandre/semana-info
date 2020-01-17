@@ -53,16 +53,17 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/cadastro").permitAll()
 			    .antMatchers("/emailUser").permitAll()
 			    .antMatchers("/usuarios/participante/**").permitAll()
-			    .antMatchers("/usuarios").permitAll()
-			    .antMatchers("/user").hasRole("LISTAR_PALESTRA")
+			    .antMatchers("/usuarios").permitAll()			   
 			    .antMatchers("/recuperar").permitAll()
 			    .antMatchers("/verificationCPF").permitAll()
 			    .antMatchers("/verificationEmail").permitAll()
+			    .antMatchers("/user").hasRole("LISTAR_PALESTRA")
 			    
 				//ROTAS DE ADMIN
+			    .antMatchers("/usuarios/gestor/**").permitAll()
 			    .antMatchers("/admin/novo").hasRole("CADASTRAR_GESTOR")
 			    .antMatchers("/admin").hasRole("LISTAR_GESTOR")
-			    .antMatchers("/usuarios/gestor/**").permitAll()
+			   
 			    
 			    //ROTAS DE GESTOR
 			    .antMatchers("/palestrante/novo").hasRole("CADASTRAR_PALESTRANTE")
@@ -93,6 +94,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 		           .expiredUrl("/multiple")
 		          .and()
 		          .invalidSessionUrl("/login");
+		          
 		        
 				
 	}

@@ -1,6 +1,7 @@
 <!DOCTYPE >
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/indexGe.css}">
@@ -19,9 +20,7 @@
   <div class="header-right">
     <a class="hed" th:href="@{/palestrante/novo}">Novo Palestrante</a>
      <span class="dropdown">
-    <button class="dropbtn" id="active">Francisco
-      <i class="fa fa-caret-down"></i>
-    </button>
+    <button class="dropbtn" id="active"><p th:text="${#authentication.principal.userModel.name}"></p><i class="fa fa-caret-down"></i></button>
     <div class="dropdown-content">
      
       <a href="#">Perfil</a>
