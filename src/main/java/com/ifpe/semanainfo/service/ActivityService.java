@@ -29,7 +29,7 @@ public class ActivityService {
 		return activityRepository.findById(id).get();
 	}
 	
-	public void deleteActivity(Activity activity, Integer id) {
+	public void deleteActivity(Integer id) {
 		this.activityRepository.deleteById(id);
 	}
 
@@ -41,7 +41,7 @@ public class ActivityService {
 		return activityRepository.PickTimeFim(time,room);
 	}
 
-	public Activity verificaTimeSpeaker( String time,String palestrante) {
+	public Activity verificaTimeSpeaker(String time,String palestrante) {
 		return activityRepository.PickTimeSpeaker(time,palestrante);
 	}
 }

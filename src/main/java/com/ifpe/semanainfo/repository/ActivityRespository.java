@@ -13,6 +13,6 @@ public interface ActivityRespository extends JpaRepository<Activity, Integer> {
 	@Query(value =  "select * from activity where time_fim = ?1 AND room = ?2", nativeQuery = true)
 	public Activity PickTimeFim(String time,String room);
 
-	@Query(value =  "select * from activity where time_fim = ?1 AND speaker = ?2", nativeQuery = true)
-	public Activity PickTimeSpeaker( String time,String palestrante);
+	@Query(value =  "select * from activity where time_ini = ?1 AND speaker = ?2", nativeQuery = true)
+	public Activity PickTimeSpeaker(String time,String palestrante);
 }

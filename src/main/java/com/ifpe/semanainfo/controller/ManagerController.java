@@ -13,6 +13,7 @@ import com.ifpe.semanainfo.model.Activity;
 import com.ifpe.semanainfo.model.Groups;
 import com.ifpe.semanainfo.model.Room;
 import com.ifpe.semanainfo.model.UserModel;
+import com.ifpe.semanainfo.service.ActivityService;
 import com.ifpe.semanainfo.service.AdminService;
 import com.ifpe.semanainfo.service.GroupsService;
 import com.ifpe.semanainfo.service.RoomService;
@@ -32,9 +33,14 @@ public class ManagerController {
 	@Autowired
 	private RoomService roomService;
 	
+	@Autowired
+	private ActivityService activityService;
+	
 	@GetMapping("/manager")
 	public String showHome(Model model) {
 		
+		List<Activity> activitys = activityService.listActivity();
+		model.addAttribute("activitys", activitys);
 		return "/manager/home";
 	}
 	

@@ -228,33 +228,34 @@ $(document).ready(function(){
 	
 	jQuery.validator.addMethod("timeSpeaker", function(value, element) {
 		   value = jQuery.trim(value);
-		  
+		   var teste = true;
 		   $.ajax({
                    type:'GET',
-                   url:'/verificationTimeSpeaker',	
+                   url:'/verificationTimeSpeaker',
+                   async: false, 
                    dataType: "json",
                    data:{
                 	   time: function()
 	                      {
 	                          return $('#timeIni').val();
 	                      },
-	                      palestrante: function()
+	                   palestrante: function()
 	                      {
 	                    	return $('#palestrante').val();
 	                      }
-                   },
-                   success:function(retorno){
-                	   var isSuccess;
-        			   console.log(112)
-        			   
-        			   isSuccess = false;
-        			   console.log(isSuccess)
-        			   return true;
                    }
-		   })
+		   }).done(function(retorno) {
+	            if(retorno == true){
+	            	teste = true;
+	            }else{
+	            	teste = false
+	            }
+	            
+	       })
+		   return teste;
 		   
 
-	});
+	}), "oiioio";
 	
 	
 });

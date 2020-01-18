@@ -55,9 +55,9 @@ public class ValidationController {
 	@GetMapping("/verificationTimeFim")
 	@ResponseBody
 	public String valideTimeFim(@PathParam("time") String time,@PathParam("room") String room) {
-		System.out.println("1111111111------"+ time + "-----11111111111-----"+room);
+		
 		Boolean cpfChecado = activityService.verificaTimeFim(time,room) == null;
-		System.out.println(cpfChecado);
+			
 		return cpfChecado.toString();
 		
 	}
@@ -66,9 +66,9 @@ public class ValidationController {
 	@GetMapping("/verificationTimeSpeaker")
 	@ResponseBody
 	public String valideTimeSpeaker(@PathParam("time") String time,@PathParam("palestrante") String palestrante) {
-System.out.println("1111111111------"+ time + "-----11111111111-----"+palestrante);
+		
 		Boolean cpfChecado = activityService.verificaTimeSpeaker(time,palestrante) == null;
-		System.out.println(cpfChecado);
+		
 		return cpfChecado.toString();
 		
 	}

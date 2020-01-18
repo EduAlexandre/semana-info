@@ -6,12 +6,14 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/indexGe.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/cards.css}">
+	<link rel="stylesheet" type="text/css" href="/assets/css/frameWorks/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -41,73 +43,32 @@
 
 <div class="container">
 	
-	<div class="card-carousel" id="debug_id_2">
-	  <button class="button-spin counterclockwise">&lt;</button>
-	  <div class="inner-carousel">
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>2Now, now. Perfectly symmetrical violence never solved anything.</h4>
-	        <p>2If we can hit that bullseye, the rest of the dominoes will fall like a house of cards.<br>Checkmate.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>2No! The cat shelter's on to me.</h4>
-	        <p>2I decline the title of Iron Cook and accept the lesser title of Zinc Saucier, which I just made up.<br>Uhh… also, comes with double prize money.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>2Acting Unit 0.8</h4>
-	        <p>2You've killed me!<br>Oh, you've killed me!<br>File not found.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>2Uh, is the puppy mechanical in any way?</h4>
-	        <p>2I'm sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>22h, is the puppy mechanical in any way?</h4>
-	        <p>2I'm sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>3Uh, is the puppy mechanical in any way?</h4>
-	        <p>2I'm sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>22h, is the puppy mechanical in any way?</h4>
-	        <p>2I'm sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>3w24, is the puppy mechanical in any way?</h4>
-	        <p>2I'm sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>qwq, is the puppy mechanical in any way?</h4>
-	        <p>2I'm sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>
-	    </div>
-	    <div>
-	    	<span class="status">Disponivel</span>
-	        <h4>daUh, is the puppy mechanical in any way?</h4>
-	        <p>2I'm sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in.</p>
-	        <a href="#" onclick="return false;">Se-Inscrever!</a>	
-	    </div>
-	  </div>
-	  <button class="button-spin clockwise">&gt;</button>
+	<div id="caixa">
+		<div class="button 1" onclick="shiftLeft()"><img src="https://image.ibb.co/mRsEb7/left_arrow.png" alt=""></div>
+        <div class="cards-wrapper">
+            <ul class="cards__container">
+                <li class="box box--hide" th:each="list : ${activitys}">
+                	<h4 th:text="${list.nameEvent}"></h4>
+                	
+                	<h5 th:text="${list.speaker}"></h5>
+                	
+                	<p >Vagas: <span th:text="${list.amountVacancies}"></span> </p>
+                	
+                	<p> <span th:text="${list.room}"></span> </p>
+                	
+                	<p th:text="${list.description}"></p>
+                	
+                	<p>Horario: <span th:text="${list.timeIni}"></span> ás <span th:text="${list.timeFim}"></span></p>
+                	
+                	
+                	<a th:href="@{/editePalestra/}+${list.id}">Edit</a><br><br>
+                	
+                	<a th:href="@{/deletePalestra/}+${list.id}">Exclu</a><br><br>
+                </li>
+            </ul>
+        </div>
+        <div id="tbn" class="button 2" onclick="shiftRight()"><img src="https://image.ibb.co/dfPSw7/right_arrow.png" alt=""></div>
 	</div>
-	
 </div>
 
 
@@ -118,91 +79,12 @@
 
 </body>
 <script>
-    /*
-* My adaptation of:
-*   Flux 3D Carousel
-*   Author: Dean Coulter
-*   Licensed under the MIT license
-*   Version 0.1
-*
-*   - Changed from figure element cards to any html.
-*   - Removed use of id, to allow multiple carousels.
-*   - Blocking of events on cards in the background.
-*   - Dimming of cards in the background.
-*   - Fixed continuous rotation.
-*   - Added functionality for multiple carousels.
-*   - Adding clickable arrow icon buttons on the sides.
-*/
-function cardCarousel3d(carousels){
-var rotateHandler = function(evt) {
-    var carousel = this.parentElement;
-    if(carousel.classList.contains('card-carousel') === false){
-    var carousel = carousel.parentElement;
-    }
-    var rotate_int = parseInt(carousel.dataset.rotateInt || 0);
-    if(this.classList.contains('counterclockwise')){
-    rotate_int += 1;
-    } else if(this.classList.contains('clockwise')){
-    rotate_int -= 1;
-    }
-    carousel.dataset.rotateInt = rotate_int;
-    animate_slider(carousel);
-}
-for(var i = 0; i < carousels.length; i++) {
-    var carousel = carousels[i];
-    var inner = carousel.querySelector('.inner-carousel');
-    var cards = carousel.querySelectorAll('.inner-carousel > div');
-    var size = cards.length;
-    var panelSize = inner.clientWidth;
-    var translateZ = Math.round( ( panelSize / 2 ) / Math.tan( Math.PI / size ) ) * 1.7;
-    inner.style.transform = "rotateY(0deg) translateZ(-" + translateZ + "px)";
-    var btnLeft = carousel.querySelector('.button-spin.counterclockwise');
-    if(btnLeft !== null) {
-    btnLeft.addEventListener("click", rotateHandler, false);
-    }
-    var btnRight = carousel.querySelector('.button-spin.clockwise');
-    if(btnRight !== null) {
-    btnRight.addEventListener("click", rotateHandler, false);  
-    }
-    animate_slider(carousel);
-}
-
-function animate_slider(carousel){
-    var rotate_int = parseInt(carousel.dataset.rotateInt || 0);
-    var inner = carousel.querySelector('.inner-carousel');
-    var cards = carousel.querySelectorAll('.inner-carousel > div');
-    console.log(cards)
-    var size = cards.length;
-    console.log(size)
-    var panelSize = inner.clientWidth;
-    var translateZ = Math.round( ( panelSize / 2 ) / Math.tan( Math.PI / size ) ) * 1.7;
-    var rotateY = 0;
-    var ry =  360 / size;
-    rotateY = ry * rotate_int;
-
-    for(var i = 0; i < size; i++){
-    var z = (rotate_int * ry) + (i * ry);
-    var child = cards[i];
-    child.style.transform = "rotateY(" + z + "deg) translateZ(" + translateZ + "px) rotateY(" + (-z).toString() + "deg)";
-    child.classList.remove('clockwise');
-    child.classList.remove('front');
-    child.classList.remove('counterclockwise');
-    child.removeEventListener("click", rotateHandler, false);
-    var zz = z % 360;
-    if(zz === 0) {
-        child.classList.add('front');
-    } else if (zz === ry || zz === -360 + ry) {
-        child.classList.add('clockwise');
-        child.addEventListener("click", rotateHandler, false);
-    } else if (zz === 360 - ry || zz === 0 - ry) {
-        child.classList.add('counterclockwise');
-        child.addEventListener("click", rotateHandler, false);
-    }
-    }
-}
-}
-
-cardCarousel3d(document.querySelectorAll('.card-carousel'));
-
+$(document).ready(function(){
+	$(".cards__container").children().first().removeClass("box--hide");
+	
+	$("#tbn").click();
+})
+	
 </script>
+<script src='/assets/js/frameWorks/app.js'></script>
 </html>
