@@ -1,5 +1,6 @@
 package com.ifpe.semanainfo.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,6 +24,10 @@ public interface Users extends JpaRepository<UserModel, Long>, UsersQueries {
 
 	public UserModel findByEmail(String email);
 	
+	@Query(value =  "select * from user_model where cod_grup = ?1", nativeQuery = true)
+	public List<UserModel> pickASpeaker(Long id);
+
+	public UserModel findById(UserModel speaker);
 	
 	
 }

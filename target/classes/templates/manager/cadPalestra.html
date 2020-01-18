@@ -32,22 +32,45 @@
     
   </div>
 </div>
-	
-	<form class="log" th:action="@{/emailSpeaker}" th:object="${speaker}" method="post">
 
-       	<h1 class="h1">Enviar cadastro para Palestrantes</h1>
+	<form id="cadPalestra" class="log" th:action="@{/activitySave}" th:object="${activity}" method="post">
+
+       	<h1 class="h1">Cadastro De Palestras</h1>
 
 		<label>Nome</label><br>
-        <input type="text" placeholder="Nome" th:field="*{name}"><br>
+        <input type="text" placeholder="Nome do evento" th:field="*{nameEvent}"><br><br>
 
-        <label>Email</label><br>
-        <input type="email" placeholder="Email" th:field="*{email}"><br>
+        <label>Vagas</label><br>
+        <input type="text" th:field="*{amountVacancies}"><br><br>
         
-        <select th:field="*{groups}" style="opacity: 0">
-        	<option th:value="${groups.id}" th:text="${groups.nome}"></option>
-        </select>
+        <label>Descrição</label>
+        <textarea rows="4" cols="12" th:field="*{description}"></textarea><br><br>
+        
+        <select th:field="*{speaker}" id="palestrante">
+        	<option th:each="list : ${speakers}" th:value="${list.name}" th:text="${list.name}"></option>
+        </select><br><br>
+        
+        <select th:field="*{room}" id="sala">
+        	<option th:each="list : ${rooms}" th:value="${list.nome}" th:text="${list.nome}"></option>
+        </select><br><br>
+        
+        <label>Horario de inicio</label>
+        <input type="time" th:field="*{timeIni}" id="timeIni"><br><br>
+        
+        <label>Horario de inicio</label>
+        <input type="time" th:field="*{timeFim}" id="timeFim"><br><br>
+        
+        
             
         <br><button class="but" type="submit">Enviar</button>
      </form>
 </body>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/assets/js/validacoesforms.js"></script>
 </html>

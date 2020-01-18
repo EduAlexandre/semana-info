@@ -15,7 +15,10 @@ public class ActivityService {
 	private ActivityRespository activityRepository;
 	
 	public void saveActivity(Activity activity) {
-		this.activityRepository.save(activity);
+
+		System.out.println(activity.getRoom());
+		
+		activityRepository.save(activity);
 	}
 	
 	public List<Activity> listActivity(){
@@ -28,5 +31,17 @@ public class ActivityService {
 	
 	public void deleteActivity(Activity activity, Integer id) {
 		this.activityRepository.deleteById(id);
+	}
+
+	public Activity verificaTimeIni(String time,String room) {
+		return activityRepository.PickTimeIni(time,room);
+	}
+	
+	public Activity verificaTimeFim(String time ,String room) {
+		return activityRepository.PickTimeFim(time,room);
+	}
+
+	public Activity verificaTimeSpeaker( String time,String palestrante) {
+		return activityRepository.PickTimeSpeaker(time,palestrante);
 	}
 }

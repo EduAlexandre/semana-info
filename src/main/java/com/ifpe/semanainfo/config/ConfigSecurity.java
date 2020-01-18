@@ -72,6 +72,9 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/palestra/nova").hasRole("CADASTRAR_PALESTRA")
 			    .antMatchers("/palestra").hasRole("LISTAR_PALESTRA")
 			    .antMatchers("/usuarios/palestrante/**").hasRole("ATUALIZAR_STATUS")
+			    .antMatchers("/verificationTimeIni").permitAll()
+			    .antMatchers("/verificationTimeFim").permitAll()
+			    .antMatchers("/verificationTimeSpeaker").permitAll()
 			    
 			    //ROTAS DE PALESTRANTE
 			    .antMatchers("/emailSpeaker").permitAll()

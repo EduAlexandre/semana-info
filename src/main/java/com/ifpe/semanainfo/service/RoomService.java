@@ -21,7 +21,7 @@ public class RoomService {
 		this.roomDAO.save(room);
 	}
 	
-	public List<Room> listRoom(){
+	public List<Room> listAll(){
 		return roomDAO.findAll();
 	}
 	

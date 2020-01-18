@@ -1,15 +1,41 @@
-<!DOCTYPE html>
+<!DOCTYPE >
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/indexGe.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/cards.css}">
+	<link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
 </head>
 <body>
+
+<div class="header">
+  <a href="/manager" class="logo"><img src="/assets/img/logo.png" width="180"></a>
+  <div class="header-right">
+  	<a class="hed" th:href="@{/manager}">Home</a>
+  	<a class="hed" th:href="@{/palestra/nova}">Nova Palestra</a>
+    <a class="hed" th:href="@{/palestrante/novo}">Novo Palestrante</a>
+     <span class="dropdown">
+    <button class="dropbtn" id="active" th:text="${#authentication.principal.userModel.name}"><i class="fa fa-caret-down"></i></button>
+    <div class="dropdown-content">
+     
+      <a href="#">Perfil</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </span> 
+    
+  </div>
+</div>
 	
 	<form class="log" th:action="@{/emailSpeaker}" th:object="${speaker}" method="post">
 
-       	<h1 class="h1">Enviar cadastro para os Gestores</h1>
+       	<h1 class="h1">Enviar cadastro para Palestrantes</h1>
 
 		<label>Nome</label><br>
         <input type="text" placeholder="Nome" th:field="*{name}"><br>

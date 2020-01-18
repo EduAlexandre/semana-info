@@ -133,4 +133,128 @@ $(document).ready(function(){
 				
 	});
 	
+	//FORM CAD PALESTRA
+	$("#cadPalestra").validate({
+		rules:{
+			nameEvent:{
+				required: true,
+				maxlength: 100,
+			},
+			amountVacancies:{
+				required: true,
+			},
+			description:{
+				required: true,
+			},
+			timeIni:{
+				required: true,
+				timeSpeaker:true,
+				remote:{
+					url: '/verificationTimeIni',
+					type: "get",
+					dataType: "json",
+					data:{
+						time: function()
+	                      {
+	                          return $('#timeIni').val();
+	                      },
+	                    room: function()
+	                      {
+	                    	return $('#sala').val();
+	                      }
+	
+					}
+				}
+			},
+			timeFim:{
+				required: true,
+				remote:{
+					url: '/verificationTimeFim',
+					type: "get",
+					dataType: "json",
+					data:{
+						time: function()
+	                      {
+	                          return $('#timeFim').val();
+	                      },
+	                    room: function()
+	                      {
+	                    	return $('#sala').val();
+	                      }
+	
+					}
+				}
+			},
+			speaker:{
+				required: true,
+			},
+			room:{
+				required: true,
+			},
+			submitHandler: function(form){
+				form.submit()
+			}
+			
+		},
+		messages:{
+			nameEvent:{
+				required:"Este campo é obrigatório.",
+				maxlength: 100,
+			},
+			amountVacancies:{
+				required: "Este campo é obrigatório.",
+			},
+			description:{
+				required: "Este campo é obrigatório.",
+			},
+			timeIni:{
+				required: "Este campo é obrigatório.",
+				remote: "Este horario não esta disponivel para a sala selecionada!",
+				timeSpeaker: "O palestrante informado já esta com este horario reservado!"
+			},
+			timeFim:{
+				required: "Este campo é obrigatório.",
+				remote: "Este horario não esta disponivel para a sala selecionada!"
+			},
+			speaker:{
+				required: "Este campo é obrigatório.",
+			},
+			room:{
+				required: "Este campo é obrigatório.",
+			}
+		}
+				
+	});
+	
+	jQuery.validator.addMethod("timeSpeaker", function(value, element) {
+		   value = jQuery.trim(value);
+		  
+		   $.ajax({
+                   type:'GET',
+                   url:'/verificationTimeSpeaker',	
+                   dataType: "json",
+                   data:{
+                	   time: function()
+	                      {
+	                          return $('#timeIni').val();
+	                      },
+	                      palestrante: function()
+	                      {
+	                    	return $('#palestrante').val();
+	                      }
+                   },
+                   success:function(retorno){
+                	   var isSuccess;
+        			   console.log(112)
+        			   
+        			   isSuccess = false;
+        			   console.log(isSuccess)
+        			   return true;
+                   }
+		   })
+		   
+
+	});
+	
+	
 });

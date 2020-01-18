@@ -1,5 +1,7 @@
 package com.ifpe.semanainfo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,7 @@ public class AdminService {
 	
 	@Autowired
 	private MailerUser mailUser;
+	
 	
 	
 	//GESTOR
@@ -63,7 +66,7 @@ public class AdminService {
 	public void saveSpeaker(UserModel speaker) {
 
 		String newSenha = GeneratePassword.generatePass();
-		
+		System.out.println(newSenha);
 		String newSenhaCrip = GeneratePassword.cripto(newSenha);
 		speaker.setPassword(newSenhaCrip);
 		speaker.setActive(false);
@@ -74,6 +77,11 @@ public class AdminService {
 		
 		speaker.setPassword(newSenha);
 		mailSpeaker.enviar(speaker);
+	}
+	
+	public List<UserModel> PickASpeakes(Long id) {
+		
+		return repositoryUser.pickASpeaker(id);
 	}
 	
 	//TODOS
@@ -99,7 +107,7 @@ public class AdminService {
 		return repositoryUser.findByCpf(cpf);
 	}
 	
-	public UserModel verificaEmail(String email) {
+	public UserModel verificaEmail(String email) { 
 		return repositoryUser.findByEmail(email);
 	}
 	
