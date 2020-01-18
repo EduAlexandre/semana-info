@@ -13,21 +13,7 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String showLogin(@AuthenticationPrincipal SystemUser user) {
-	   if(user != null) {
-		   if(user.getUserModel().getCodGrup() == 1) {
-			   return "redirect:/admin/novo";
-		   }
-		   if(user.getUserModel().getCodGrup() == 2) {
-			   return "redirect:/manager";
-		   }
-		   if(user.getUserModel().getCodGrup() == 3) {
-			   return "redirect:/speaker";
-		   }
-		   if(user.getUserModel().getCodGrup() == 4) {
-			   return "redirect:/user";
-		   }
-		   return "redirect:/403";
-	   }
+	   
 		return "/login";
 	}
 	

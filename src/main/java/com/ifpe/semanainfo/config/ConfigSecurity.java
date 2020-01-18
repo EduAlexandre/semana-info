@@ -36,7 +36,8 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
-		 .antMatchers("/assets/**");
+		 .antMatchers("/assets/**");		 
+		 
 	}
 	
 	
@@ -76,12 +77,15 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/emailSpeaker").permitAll()
 			    .antMatchers("/usuarios/palestrante/**").hasRole("ATUALIZAR_STATUS")
 			    
+			    //página default ao logar
+			    .antMatchers("/autenticate").permitAll()
 			    
 				.anyRequest().authenticated()	
 			    //.anyRequest().denyAll()
 				.and()
 			.formLogin()
 			.loginPage("/login")
+			.defaultSuccessUrl("/autenticate")			
 			.permitAll()
 			    .and()
 			   .logout()
