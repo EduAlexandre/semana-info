@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
-	               xmlns:th="http://www.thymeleaf.org"
-	               xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <link rel="stylesheet" type="text/css" th:href="@{assets/css/index.css}">
+<html  xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+
+<head >
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
-    <title>Login</title>
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/index.css}">
+    <title>Home</title>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
     <!-- CDN das Mensagens -->
 	  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -82,20 +85,17 @@
 </div>
                 </div>
                 <div class="col col-2 ">
-                           <div class="cont">
-                           
+                           <div class="cont cont-log">
   					<form id="log" class="log" th:action="@{/login}"  method="post">
 
                         <h1 class="h1-1">Entrar</h1>
 
-                          <!-- th:if="${#bools.isTrue(param.error)}" verifica se na url existe o parametro ?error -->
-
-						   <div th:if="${#bools.isTrue(param.error)}">
+							<div th:if="${#bools.isTrue(param.error)}">
                                O email e/ou senha não conferem 
                            </div>
 
-                        <label for="email">Email</label><br>
-                       <input type="text" placeholder="Email" class="inp" name="username"  autofocus="autofocus"><br>
+                        <label for="email" id="login">Email</label><br>
+                       <input type="email"placeholder="Email" class="inp" name="username"  autofocus="autofocus"><br>
                             <br><label class="sen" for="senha">Senha</label><br>
                         
                             <input type="password" placeholder="senha" class="inp" name="password"><br><br>

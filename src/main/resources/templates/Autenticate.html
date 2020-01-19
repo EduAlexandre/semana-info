@@ -1,71 +1,70 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html  xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{assets/css/index.css}">
+
+
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/index.css}">
+   
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Logado</title>
+    <title>Logado</title>
 </head>
-<body><div class="header">
-  <a th:href="@{/logout}" style="color: #FFF">Sair</a>
-  <a href="#default" class="logo"><img th:src="@{assets/imgages/logo.png}" width="180"></a>
+<body>
+
+<div class="header">
+  <a href="/autenticate" class="logo"><img src="/assets/img/logo.png" width="130"></a>
   <div class="header-right">
-    <a href="" class="hed">Os melhores eventos para você !</a>
+    <a href="#" class="hed">Os melhores eventos para você !</a>
+     <span class="dropdown">
+    <button class="dropbtn" id="active" th:text="${#authentication.principal.userModel.name}">
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Perfil</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </span> 
+    
   </div>
 </div>
     <div class="container">
         <div class="row">
 
-            <div class="col col-2">
-                <div class="cont cont-2 cont-3">
-                    <h1 class="h1-2">Seja Bem-vindo(a) ao TT's Events.</h1>
+            <div class="col">
+                <div class="cont-users cont-users-2">
+                    <h1 class="h1-2-user">Seja Bem-vindo(a) ao TT's Events.</h1>
                    
-                    <h3 class="h3-1">Você já está logado no sistema, só basta clicar em "Seguir para home" para usofruir de todos recursos do site, Aproveite! </h3>
-</div>
-                </div>
-                <div class="col col-2" sec:authorize="hasRole('AREA_ADMIN')">
-                	<div class="cont-4">
-                		<a th:href="@{admin/novo}">
-                		<button class="but"><h1 class="h1-4">Area de adminstradores</h1> <span> 
-                		<img src="https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_960_720.png" width="30"></span>
-                		</button></a>
-                	</div>
-                </div>
-                
-                <div class="col col-2" sec:authorize="hasRole('AREA_GESTOR')">
-                	<div class="cont-4">
-                		<a th:href="@{/manager}">
-                		<button class="but"><h1 class="h1-4">Area dos gestores</h1> <span> 
-                		<img src="https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_960_720.png" width="30"></span>
-                		</button></a>
-                	</div>
-                </div>
-                
-                 <div class="col col-2" sec:authorize="hasRole('AREA_PALESTRANTE')">
-                	<div class="cont-4">
-                		<a th:href="@{/speaker}">
-                		<button class="but"><h1 class="h1-4">Area dos palestrantes</h1> <span> 
-                		<img src="https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_960_720.png" width="30"></span>
-                		</button></a>
-                	</div>
-                </div>
-                
-                 <div class="col col-2" sec:authorize="hasRole('AREA_USUARIO')">
-                	<div class="cont-4">
-                		<a th:href="@{/user}">
-                		<button class="but"><h1 class="h1-4">Area dos usuários</h1> <span> 
-                		<img src="https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_960_720.png" width="30"></span>
-                		</button></a>
-                	</div>
-                </div>
+                    <h3 class="h3-1-user">Você já está logado no sistema, só basta clicar no botão abaixo para usofruir de todos recursos do site, Aproveite! </h3>
+                    
+                    <div class="but-centro">
 
-            </div>
+						<a th:href="@{/user}" sec:authorize="hasRole('AREA_USUARIO')" style="text-decoration: none; width: 90%; text-align: center;">
+	                    	<button  class="but-user"  style="background-color:#FFA500">Área dos Usuários<br><img src="https://cdn4.iconfinder.com/data/icons/standard-free-icons/139/Profile01-512.png" width="35"></button>
+						</a>
+						<a th:href="@{/speaker}" sec:authorize="hasRole('AREA_PALESTRANTE')" style="text-decoration: none; width: 90%; text-align: center;">
+							<button  class="but-user"  style="background-color:#FF4040">Área de Palestrantes<br><img src="https://image.flaticon.com/icons/png/512/33/33708.png" width="35"></button>
+						</a>
+						
+	 					<a th:href="@{/manager}" sec:authorize="hasRole('AREA_GESTOR')" style="text-decoration: none; width: 90%; text-align: center;">
+	                    	<button  class="but-user"  style="background-color:#43CD80">Área do Gestor<br><img src="https://image.flaticon.com/icons/png/512/115/115893.png" width="35"></button>
+	                    </a>
+	                    
+	                    <a th:href="@{admin/novo}" sec:authorize="hasRole('AREA_ADMIN')" style="text-decoration: none; width: 90%; text-align: center;">
+	                    	<button  class="but-user"  style="background-color:#FFA500">Área dos Admins<br><img src="https://cdn4.iconfinder.com/data/icons/standard-free-icons/139/Profile01-512.png" width="35"></button>
+						</a>
+
+                    </div>
+
+                </div>
+             </div>
+
         </div>
+    </div>
 <footer class="footer">
- © Todos os Direitos reservados! TT'S EVENTS .
+ © Todos os Direitos reservados! 
 </footer>
 
 </body>

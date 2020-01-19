@@ -5,24 +5,21 @@
 <head>
 	     	<link rel="stylesheet" type="text/css" th:href="@{assets/css/cadastro.css}">
 	        <link rel="stylesheet" type="text/css"  th:href="@{assets/css/index.css}">
+          	<link rel="stylesheet" type="text/css" href="index.css">
     		<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
   			<link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
    			 <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
-
+			<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro</title>
 </head>
 
 <body>
-<div class="header">
-  <a href="#default" class="logo"><img src="/assets/img/logo.png" width="180"></a>
-  <div class="header-right">
-    <a class="hed" href="#">Os melhores eventos para você</a>
-   
-  </div>
+
 </div>
 
-
+<a href="/login"><button class="but-back">Voltar para Login</button></a>
     
 
 
@@ -33,50 +30,49 @@
             <div class="col col-2">
                 <div class="cont cont-2 cont-3">
 
-                    <h1 class="h1-2">O Primeiro passo foi dado...</h1>
+                    <h1 class="h1-2-log">O Primeiro passo foi dado...</h1>
                    
                     <h3 class="h3-1">Em poucos minutos você estará usufruindo dos melhores workshops de tecnologia, apenas cadastre-se! </h3>
 
-			</div>
+			</div> <a href="#cad"><button class="but-cad-res">Se cadastrar</button></a>
 
 
 
 
                 </div>
                 <div class="col col-2 ">
-                           <div class="cont">
+                           <div class="cont cont-cad">
   					<form id="cadUSer" class="log" th:action="@{/emailUser}" th:object="${usuario}" method="post">
 
-                        	<h1 class="h1-1">Cadastre-se</h1>
+                        	<h1 class="h1-1" id="cad">Cadastre-se</h1>
 
                         	<label for="nome">Nome</label><br>
-                       		<input type="text" placeholder="Nome" class="inp" th:field="*{name}"><br>
+                       		<input type="text" placeholder="Nome" class="inp-cad" th:field="*{name}"><br>
                        		
                             <br><label class="sen" for="cpf">CPF</label><br>
-                            <input type="text" id="cpf" data-mask="999.999.999-99" placeholder="cpf" class="inp" th:field="*{cpf}"><br><br>
+                            <input type="text" id="cpf" data-mask="999.999.999-99" placeholder="cpf" class="inp-cad" th:field="*{cpf}"><br><br>
                             
                             <label for="email">Informe seu melhor email</label><br>
-                       		<input type="email" id="email" placeholder="Email" class="inp" th:field="*{email}"><br>
+                       		<input type="email" id="email" placeholder="Email" class="inp-cad" th:field="*{email}"><br>
                        		
                             <br><label class="sen">Senha</label><br>
-                            <input type="password" placeholder="senha" id="senha" name="senha" class="inp"><br><br>
+                            <input type="password" placeholder="senha" id="senha" name="senha" class="inp-cad"><br><br>
                             
                             <label class="sen" for="senha">Confirme sua senha</label><br>
-                            <input type="password" placeholder="Confirme sua senha" class="inp" th:field="*{password}"><br><br>
+                            <input type="password" placeholder="Confirme sua senha" class="inp-cad" th:field="*{password}"><br>
                             
                             <select th:field="*{groups}" style="opacity: 0">
 				            	<option th:value="${groups.id}" th:text="${groups.nome}"></option>
 				            </select>
                             
-                            <br><button class="but" type="submit">Se Cadastrar</button>
+                            <button class="but-cad" type="submit">Se Cadastrar</button>
                     </form>
                     </div>
                 </div>
             </div>
         </div>
-<footer class="footer">
-  Footer 
-</footer>
+
+
 
 
 </body>
