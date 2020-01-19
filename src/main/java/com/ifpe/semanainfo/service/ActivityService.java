@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ifpe.semanainfo.model.Activity;
+import com.ifpe.semanainfo.model.Registrations;
 import com.ifpe.semanainfo.repository.ActivityRespository;
+import com.ifpe.semanainfo.repository.RegistrationsRepository;
 
 @Service
 public class ActivityService {
 	
 	@Autowired
 	private ActivityRespository activityRepository;
+
+	@Autowired
+	private RegistrationsRepository registrationsRepository;
 	
 	public void saveActivity(Activity activity) {
 
@@ -43,5 +48,15 @@ public class ActivityService {
 
 	public Activity verificaTimeSpeaker(String time,String palestrante) {
 		return activityRepository.PickTimeSpeaker(time,palestrante);
+	}
+
+	public void registration(Integer id, Long idUser) {
+		
+		Registrations registrations = new Registrations();
+		registrations.setActivity(id);;
+		registrations.setUser(idUser);
+		
+		registrationsRepository.save(registrations);
+		
 	}
 }

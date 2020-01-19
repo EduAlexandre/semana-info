@@ -54,8 +54,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/cadastro").permitAll()
 			    .antMatchers("/emailUser").permitAll()
 			    .antMatchers("/usuarios/participante/**").permitAll()
-			    .antMatchers("/usuarios").permitAll()			   
-			    .antMatchers("/recuperar").permitAll()
+			    .antMatchers("/usuarios").permitAll()	
 			    .antMatchers("/verificationCPF").permitAll()
 			    .antMatchers("/verificationEmail").permitAll()
 			    .antMatchers("/user").hasRole("LISTAR_PALESTRA")
@@ -77,7 +76,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/verificationTimeSpeaker").permitAll()
 			    .antMatchers(" /deletePalestra/**").permitAll()
 			    .antMatchers("/editePalestra/**").permitAll()
-			    
+			    .antMatchers("/inscricao/**").permitAll()
 			   
 			    
 			    //ROTAS DE PALESTRANTE

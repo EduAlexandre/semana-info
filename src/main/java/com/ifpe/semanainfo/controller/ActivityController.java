@@ -57,5 +57,15 @@ public class ActivityController {
 		
 		return "redirect:/manager";
 	}
+	
+	@GetMapping("/inscricao/{id}/{idUser}")
+	public String inscricao(@PathVariable("id") Integer id,@PathVariable("idUser") Long idUser) {
+		
+		System.out.println(id+"----"+idUser); 
+		
+		activityService.registration(id,idUser);
+		
+		return "redirect:/user";
+	}
 
 }
