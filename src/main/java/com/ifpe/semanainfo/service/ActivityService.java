@@ -56,20 +56,18 @@ public class ActivityService {
 		
 	}
 	
-	
 	public List<Registrations> PickMyActivitys(Integer id) {
 		
 		return registrationsRepository.findAllByUserId(id);
 		
 	}
 
-	public List<Activity> listAOfNameSpeaker(String speaker) {
-		
-		return activityRepository.findAllBySpeaker(speaker);
-	}
-
 	public Registrations verificaTimeIniUser(String time, Integer id) {
 
 		return registrationsRepository.pickTimeIniUser(time,id);
+	}
+
+	public List<Activity> pickAllForSpeaker(String nome) {
+		return activityRepository.pik(nome);
 	}
 }

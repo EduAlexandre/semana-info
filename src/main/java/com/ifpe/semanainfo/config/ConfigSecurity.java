@@ -83,6 +83,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    //ROTAS DE PALESTRANTE
 			    .antMatchers("/emailSpeaker").permitAll()
 			    .antMatchers("/usuarios/palestrante/**").hasRole("ATUALIZAR_STATUS")
+			    .antMatchers("/palestra/speaker/**").permitAll()
 			    
 			    //página default ao logar
 			    .antMatchers("/autenticate").permitAll()
