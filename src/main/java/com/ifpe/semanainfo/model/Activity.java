@@ -33,10 +33,7 @@ public class Activity {
 	
 	private String timeFim;
 	
-	@ManyToMany
-	@JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_activity"))
-	private List<UserModel> user;
-	
+		
 	public Integer getId() {
 		return id;
 	}
