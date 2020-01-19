@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ifpe.semanainfo.model.Activity;
 import com.ifpe.semanainfo.model.Groups;
+import com.ifpe.semanainfo.model.Registrations;
 import com.ifpe.semanainfo.model.UserModel;
 import com.ifpe.semanainfo.service.ActivityService;
 import com.ifpe.semanainfo.service.GroupsService;
@@ -39,6 +40,10 @@ public class UsuarioContoller {
 		
 		List<Activity> activitys = activityService.listActivity();
 		model.addAttribute("activitys", activitys);
+		
+		Registrations registrations = new Registrations();
+		model.addAttribute("registrations", registrations);
+		
 		return "/user/home";
 	}
 	

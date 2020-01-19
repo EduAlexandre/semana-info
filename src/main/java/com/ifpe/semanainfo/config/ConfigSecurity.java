@@ -58,6 +58,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/verificationCPF").permitAll()
 			    .antMatchers("/verificationEmail").permitAll()
 			    .antMatchers("/user").hasRole("LISTAR_PALESTRA")
+			    .antMatchers("/verificationTimeIniUser").permitAll()
 			    
 				//ROTAS DE ADMIN
 			    .antMatchers("/usuarios/gestor/**").permitAll()

@@ -1,5 +1,7 @@
 package com.ifpe.semanainfo.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -15,4 +17,6 @@ public interface ActivityRespository extends JpaRepository<Activity, Integer> {
 
 	@Query(value =  "select * from activity where time_ini = ?1 AND speaker = ?2", nativeQuery = true)
 	public Activity PickTimeSpeaker(String time,String palestrante);
+
+	public List<Activity> findAllBySpeaker(String speaker);
 }

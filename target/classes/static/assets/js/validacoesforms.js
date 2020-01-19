@@ -257,5 +257,39 @@ $(document).ready(function(){
 
 	}), "oiioio";
 	
-	
+	//FORM CAD PALESTRA
+	$("#formregister").validate({
+		rules:{
+			,
+			timeIni:{
+				remote:{
+					type:'get',
+		            url:'/verificationTimeIniUser',
+		            dataType: "json",
+		            data:{
+		         	   time: function()
+		                   {
+		                       return $('#timeIni').val();
+		                   },
+		                   id:{
+		                	   return $('#idUser').val();
+		                   }
+		            }
+				}
+			},
+			submitHandler: function(form){
+				form.submit()
+			}
+			
+		},
+		messages:{
+			activity:{
+				required: "e"
+			},
+			timeIni:{
+				remote: "oio"
+			}
+		}
+				
+	});
 });

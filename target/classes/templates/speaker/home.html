@@ -1,14 +1,216 @@
-<!DOCTYPE html>
+<!DOCTYPE >
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/index.css}">
+	<link rel="stylesheet" type="text/css" href="/assets/css/frameWorks/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<link href="/assets/css/frameWorks/stackedCards.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="/assets/css/frameWorks/highlight.css" rel="stylesheet">
+	
+	<script src="https://cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+	<style>
+		*, *:before, *:after {
+			box-sizing: border-box;
+		}
+		html {
+			height: 100%;
+		}
+		.stacked-cards h2 {
+			text-align: center;
+			position: relative;
+			top: -20px;
+		}
+
+		.intro {
+			max-width: 600px;
+			margin: 20px auto;
+			text-align: center;
+		}
+
+		.container-fuild {
+			max-width: 80%;
+			margin: 0 auto;
+		}
+
+		.container-fixed {
+			max-width: 767px;
+			margin: 0 auto;
+		}
+
+		.divider {
+			max-width: 500px;
+			margin: 25px auto;
+			background-color: #ccc;
+			height: 2px;
+			width: 100%;
+		}
+
+		.stacked-cards {
+			padding-top: 40px;
+			padding-bottom: 15px;
+		}
+
+		.stacked-cards-fanOut {
+			padding-bottom: 40px;
+		}
+
+		.stacked-cards-fanOut li img {
+			max-height: 200px;
+		}
+
+		.stacked-cards li {
+			width: 250px;
+			height: 250px;
+		}
+
+		@media (max-width: 767px) {
+			.stacked-cards li {
+				height: 180px;
+			}
+		}
+
+		.stacked-cards li {
+			background-color: #00bcd4;
+		}
+
+		.stacked-cards li:nth-child(n) {
+			background-color: #3599db;
+		}
+
+		.stacked-cards li:nth-child(2n) {
+			background-color: #e61b77;
+		}
+
+		.stacked-cards li:nth-child(3n) {
+			background-color: #00bcd4;
+		}
+
+		.stacked-cards li:nth-child(4n) {
+			background-color: #f4b251;
+		}
+
+		.stacked-cards li:nth-child(5n) {
+			background-color: #8e4497;
+		}
+
+		.source {
+			margin: 25px auto;
+		}
+
+		.header {
+			margin: 0px auto;
+			padding: 25px 5px;
+			background-color: #fff;
+		}
+		.header img {
+			display: block;
+			margin: 0 auto;
+			max-width: 300px;
+			height: auto;
+		}
+
+		
+	</style>
 </head>
 <body>
 
-	<a href="/logout">Sair</a>
-	<h1>HOME Speaker</h1>
+<div class="header">
+  <a href="/user" class="logo"><img src="/assets/img/logo.png" width="180"></a>
+  <div class="header-right">
+  	<a class="hed" th:href="@{/user}">Home</a>
+    <a class="hed" th:href="@{/palestra/}+${#authentication.principal.userModel.id}">Minhas Inscrições</a>
+     <span class="dropdown">
+    <button class="dropbtn" id="active" th:text="${#authentication.principal.userModel.name}"><i class="fa fa-caret-down"></i></button>
+    <div class="dropdown-content">
+     
+      <a href="#">Perfil</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </span> 
+    
+  </div>
+</div>
+<div class="let">
+	<h1 class="h1-1">
+			Obrigado por se juntar, <span th:text="${#authentication.principal.userModel.name}"></span>.<br>
+      Agora só basta escolher a palestra ideal para você!
+	</h1>
+
+</div>
+
+<div class="container">
+
+	<div class="container-fixed stacked-cards stacked-cards-fanOut">
+			<h2>Palestras</h2>
+			<ul>
+				<li th:each="list : ${activitys}">
+					<span id="status" th:if="${list.amountVacancies != 0}">Disponivel</span>
+					<span id="status" th:if="${list.amountVacancies == 0}">Indisponivel</span>
+					<h4 th:text="${list.nameEvent}"></h4>
+	                	
+                	<h5 th:text="${list.speaker}"></h5>
+                	
+                	<p >Vagas: <span th:text="${list.amountVacancies}"></span> </p>
+                	
+                	<p> <span th:text="${list.room}"></span> </p>
+                	
+                	<p th:text="${list.description}"></p>
+                	
+                	<p>Horario: <span th:text="${list.timeIni}"></span> ás <span th:text="${list.timeFim}"></span></p>
+                	
+				</li>
+			</ul>
+		</div>
+
+</div>
+
+<footer class="footer">
+ © Todos os Direitos reservados! TT'S EVENTS .
+</footer>
 
 </body>
+<script>
+$(document).ready(function(){	
+	var stackedCard = new stackedCards({
+	 	selector: '.stacked-cards',
+	 	layout: "fanOut",
+	 	transformOrigin: "bottom",
+	});
+
+	stackedCard.init();	
+})
+</script>
+<script src='/assets/js/frameWorks/app.js'></script>
+<script src="/assets/js/frameWorks/stackedCards.min.js"></script>
+
+	<script>
+		var stackedCardSlide = new stackedCards({
+		 	selector: '.stacked-cards-slide',
+		 	layout: "slide",
+		 	transformOrigin: "center",
+		 });
+
+		stackedCardSlide.init();
+
+		var stackedCardFanOut = new stackedCards({
+		 	selector: '.stacked-cards-fanOut',
+		 	layout: "fanOut",
+		 	transformOrigin: "bottom",
+		 });
+
+		stackedCardFanOut.init();
+	</script>
 </html>

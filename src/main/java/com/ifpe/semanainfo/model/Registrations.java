@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Registrations {
@@ -12,9 +13,13 @@ public class Registrations {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private Integer activity;
+	@ManyToOne
+	private Activity activity;
 
-	private Long user;
+	@ManyToOne
+	private UserModel user;
+	
+	private String timeIni;
 
 	public Integer getId() {
 		return id;
@@ -24,21 +29,31 @@ public class Registrations {
 		this.id = id;
 	}
 
-	public Integer getActivity() {
+	public Activity getActivity() {
 		return activity;
 	}
 
-	public void setActivity(Integer activity) {
+	public void setActivity(Activity activity) {
 		this.activity = activity;
 	}
 
-	public Long getUser() {
+	public UserModel getUser() {
 		return user;
 	}
 
-	public void setUser(Long user) {
+	public void setUser(UserModel user) {
 		this.user = user;
 	}
+
+	public String getTimeIni() {
+		return timeIni;
+	}
+
+	public void setTimeIni(String timeIni) {
+		this.timeIni = timeIni;
+	}
+
+
 
 	
 }

@@ -2,6 +2,8 @@ package com.ifpe.semanainfo.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ifpe.semanainfo.model.Activity;
+import com.ifpe.semanainfo.model.Registrations;
 import com.ifpe.semanainfo.model.Room;
 import com.ifpe.semanainfo.model.UserModel;
 import com.ifpe.semanainfo.service.ActivityService;
@@ -58,12 +61,22 @@ public class ActivityController {
 		return "redirect:/manager";
 	}
 	
-	@GetMapping("/inscricao/{id}/{idUser}")
-	public String inscricao(@PathVariable("id") Integer id,@PathVariable("idUser") Long idUser) {
+	@PostMapping("/inscricao")
+	public String inscricao(Registrations registrations) {
 		
-		System.out.println(id+"----"+idUser); 
+		activityService.registration(registrations);
 		
-		activityService.registration(id,idUser);
+		return "redirect:/user";
+	}
+	
+	@GetMapping("/palestra/{id}")
+	public String showMy(Model model,@PathParam("id")Integer id) {
+		
+		List<Registrations> registrations2 = activityService.PickMyActivitys(id);
+		System.out.println(registrations2);
+		
+		Integer i = registrations2.size();
+		System.out.println(i);
 		
 		return "redirect:/user";
 	}

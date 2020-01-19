@@ -50,13 +50,26 @@ public class ActivityService {
 		return activityRepository.PickTimeSpeaker(time,palestrante);
 	}
 
-	public void registration(Integer id, Long idUser) {
-		
-		Registrations registrations = new Registrations();
-		registrations.setActivity(id);;
-		registrations.setUser(idUser);
+	public void registration(Registrations registrations) {
 		
 		registrationsRepository.save(registrations);
 		
+	}
+	
+	
+	public List<Registrations> PickMyActivitys(Integer id) {
+		
+		return registrationsRepository.findAllByUserId(id);
+		
+	}
+
+	public List<Activity> listAOfNameSpeaker(String speaker) {
+		
+		return activityRepository.findAllBySpeaker(speaker);
+	}
+
+	public Registrations verificaTimeIniUser(String time, Integer id) {
+
+		return registrationsRepository.pickTimeIniUser(time,id);
 	}
 }

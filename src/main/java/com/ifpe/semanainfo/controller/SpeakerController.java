@@ -1,17 +1,27 @@
 package com.ifpe.semanainfo.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.ifpe.semanainfo.model.Activity;
+import com.ifpe.semanainfo.service.ActivityService;
 
 
 @Controller
 public class SpeakerController {
 
+	@Autowired
+	private ActivityService activityService;
 	
 	@GetMapping("/speaker")
 	public String showHomeSpeaker(Model model) {
 		
+		List<Activity> activitys = activityService.listAOfNameSpeaker("pales221");
+		model.addAttribute("activitys", activitys);
 		
 		return "/speaker/home";
 	}
