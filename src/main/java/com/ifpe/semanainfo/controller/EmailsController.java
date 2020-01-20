@@ -26,8 +26,9 @@ public class EmailsController {
 	public String envMailSpeaker(UserModel speaker,RedirectAttributes ra) {
 		
 		adminService.saveSpeaker(speaker);
+		ra.addFlashAttribute("mensagemErro", "1");
 		
-		return "redirect:/login";
+		return "redirect:/manager";
 	}
 	
 	@PostMapping("/emailUser")

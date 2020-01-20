@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: semana-info
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: markus
+Built-By: edudev
 Implementation-Vendor-Id: com.ifpe.semana-info
 Build-Jdk: 1.8.0_231
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo

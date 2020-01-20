@@ -259,8 +259,7 @@ $(document).ready(function(){
 	
 	//FORM CAD PALESTRA
 	$("#formregister").validate({
-		rules:{
-			,
+		rules:{			
 			timeIni:{
 				remote:{
 					type:'get',

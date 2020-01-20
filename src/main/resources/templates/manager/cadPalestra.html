@@ -38,27 +38,27 @@
        	<h1 class="h1">Cadastro De Palestras</h1>
 
 		<label>Nome</label><br>
-        <input type="text" placeholder="Nome do evento" th:field="*{nameEvent}"><br><br>
+        <input type="text" placeholder="Nome do evento" th:field="*{nameEvent}" required><br><br>
 
         <label>Vagas</label><br>
-        <input type="text" th:field="*{amountVacancies}"><br><br>
+        <input type="text" th:field="*{amountVacancies}" required><br><br>
         
-        <label>Descrição</label>
-        <textarea rows="4" cols="12" th:field="*{description}"></textarea><br><br>
+        <label>Descrição</label><br><br>
+        <textarea rows="6" cols="32" th:field="*{description}" style="resize:none" required></textarea><br><br>
         
-        <select th:field="*{speaker}" id="palestrante">
+        <select th:field="*{speaker}" id="palestrante" required>
         	<option th:each="list : ${speakers}" th:value="${list.name}" th:text="${list.name}"></option>
         </select><br><br>
         
-        <select th:field="*{room}" id="sala">
+        <select th:field="*{room}" id="sala" required>
         	<option th:each="list : ${rooms}" th:value="${list.nome}" th:text="${list.nome}"></option>
         </select><br><br>
         
         <label>Horario de inicio</label>
-        <input type="time" th:field="*{timeIni}" id="timeIni"><br><br>
+        <input type="time" th:field="*{timeIni}" id="timeIni" required><br><br>
         
-        <label>Horario de inicio</label>
-        <input type="time" th:field="*{timeFim}" id="timeFim"><br><br>
+        <label>Horario do Fim</label>
+        <input type="time" th:field="*{timeFim}" id="timeFim" required><br><br>
         
         
             

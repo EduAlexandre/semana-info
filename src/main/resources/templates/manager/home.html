@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+	</head>
 <body>
 
 <div class="header">
@@ -45,31 +45,35 @@
 	<div id="caixa">
 		<div class="button 1" onclick="shiftLeft()"><img src="https://image.ibb.co/mRsEb7/left_arrow.png" alt=""></div>
         <div class="cards-wrapper">
-            <ul class="cards__container">
-                <li class="box box--hide" th:each="list : ${activitys}">
-                	<h4 th:text="${list.nameEvent}"></h4>
-                	
-                	<h5 th:text="${list.speaker}"></h5>
-                	
-                	<p >Vagas: <span th:text="${list.amountVacancies}"></span> </p>
-                	
-                	<p> <span th:text="${list.room}"></span> </p>
-                	
-                	<p th:text="${list.description}"></p>
-                	
-                	<p>Horario: <span th:text="${list.timeIni}"></span> ás <span th:text="${list.timeFim}"></span></p>
-                	
-                	
-                	<a th:href="@{/editePalestra/}+${list.id}">Edit</a><br><br>
-                	
-                	<a th:href="@{/deletePalestra/}+${list.id}">Exclu</a><br><br>
-                </li>
-            </ul>
+           <table border="1">
+	    <tr>
+	        <td>Nome</td>
+	        <td>Palestrante</td>
+	        <td>Nº Vagas</td>
+	        <td>sala</td>
+	        <td>Descrição</td>
+	        <td>início</td>
+	        <td>fim</td>
+	        <td colspan="2">Ações</td>
+	    </tr>
+	    <tr th:each="list : ${activitys}">
+	        <td th:text="${list.nameEvent}"></td>
+	        <td th:text="${list.speaker}"></td>
+	        <td th:text="${list.amountVacancies}"></td>
+	        <td th:text="${list.room}"></td>
+	        <td th:text="${list.description}"></td>
+	        <td th:text="${list.timeIni}"></td> 
+	        <td th:text="${list.timeFim}"></td>
+	       
+	        <td><a th:href="@{/editePalestra/{cod}(cod=${list.id})}">Editar</a></td>
+	        <td><a th:href="@{/deletePalestra/{cod}(cod=${list.id})}">Delete</a></td>
+	    </tr>
+	</table> 
         </div>
         <div id="tbn" class="button 2" onclick="shiftRight()"><img src="https://image.ibb.co/dfPSw7/right_arrow.png" alt=""></div>
 	</div>
 </div>
-
+ 
 
 <footer class="footer">
  © Todos os Direitos reservados! TT'S EVENTS .
