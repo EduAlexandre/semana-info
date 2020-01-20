@@ -75,7 +75,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/verificationTimeIni").permitAll()
 			    .antMatchers("/verificationTimeFim").permitAll()
 			    .antMatchers("/verificationTimeSpeaker").permitAll()
-			    .antMatchers(" /deletePalestra/**").permitAll()
+			    .antMatchers("/deletePalestra/**").permitAll()
 			    .antMatchers("/editePalestra/**").permitAll()
 			    .antMatchers("/inscricao/**").permitAll()
 			   

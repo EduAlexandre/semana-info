@@ -76,7 +76,7 @@
                 			<option selected th:value="${list.timeIni}" th:text="${list.timeIni}"></option>
                 		</select>
                 		
-                		<button type="submit" id="button" class="pres submit">Inscrever-se</button>
+                		<button th:if="${list.amountVacancies} != 0" type="submit" id="button" class="pres submit">Inscrever-se</button>
                 	</form>
 				</li>
 			</ul>

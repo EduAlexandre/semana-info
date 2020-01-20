@@ -247,10 +247,8 @@ $(document).ready(function(){
 		   }).done(function(retorno) {
 	            if(retorno == true){
 	            	teste = true;
-	            	console.log(teste)
 	            }else{
 	            	teste = false;
-	            	console.log(teste)
 	            }
 	            
 	       })
@@ -259,7 +257,7 @@ $(document).ready(function(){
 
 	}), "oiioio";
 	
-	//FORM CAD PALESTRA
+	//FORM INSCRIÇÃO PALESTRA
 	$("#formregister").validate({
 		rules:{			
 			timeIni:{
