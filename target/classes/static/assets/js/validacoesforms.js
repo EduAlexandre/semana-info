@@ -247,8 +247,10 @@ $(document).ready(function(){
 		   }).done(function(retorno) {
 	            if(retorno == true){
 	            	teste = true;
+	            	console.log(teste)
 	            }else{
-	            	teste = false
+	            	teste = false;
+	            	console.log(teste)
 	            }
 	            
 	       })
@@ -269,9 +271,6 @@ $(document).ready(function(){
 		         	   time: function()
 		                   {
 		                       return $('#timeIni').val();
-		                   },
-		                   id:{
-		                	   return $('#idUser').val();
 		                   }
 		            }
 				}

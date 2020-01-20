@@ -170,7 +170,7 @@ CREATE TABLE `user_groups` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `info`.`user_groups`(`id_user`,`id_group`) VALUES(1, 1);
+INSERT INTO `user_groups`(`id_user`,`id_group`) VALUES(1, 1);
 
 
 

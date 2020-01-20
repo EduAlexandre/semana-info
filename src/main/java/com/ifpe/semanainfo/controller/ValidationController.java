@@ -62,6 +62,16 @@ public class ValidationController {
 		
 	}
 	
+	@GetMapping("/verificationTimeSpeaker")
+	@ResponseBody
+	public String valideTimeSpeaker(@PathParam("time") String time,@PathParam("palestrante") String palestrante) {
+		
+		Boolean cpfChecado = activityService.verificaTimeSpeaker(time,palestrante) == null;
+		
+		return cpfChecado.toString();
+		
+	}
+	
 	@GetMapping("/verificationTimeIniUser")
 	@ResponseBody
 	public String valideTimeIniUser(@PathParam("time") String time,@PathParam("id") Integer id) {

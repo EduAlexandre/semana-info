@@ -2,8 +2,6 @@ package com.ifpe.semanainfo.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,16 +67,6 @@ public class ActivityController {
 		return "redirect:/user";
 	}
 	
-	@GetMapping("/palestra/{id}")
-	public String showMy(Model model,@PathParam("id")Integer id) {
-		
-		List<Registrations> registrations2 = activityService.PickMyActivitys(id);
-		System.out.println(registrations2);
-		
-		Integer i = registrations2.size();
-		System.out.println(i);
-		
-		return "redirect:/user";
-	}
+	
 
 }
