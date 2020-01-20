@@ -104,6 +104,9 @@ INSERT INTO `user_model`(`active`,`email`, `name`, `password`, `cod_grup`, `cpf`
 UPDATE `user_model` SET `active` = true WHERE (`id` = '1');
 
 
+
+
+
 CREATE TABLE `activity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `amount_vacancies` int(11) NOT NULL,
@@ -153,6 +156,21 @@ CREATE TABLE `room_activity` (
   CONSTRAINT `FKcq1ej30640wvc222vvywibcvy` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+
+CREATE TABLE `user_groups` (
+ `id` bigint(20) NOT NULL AUTO_INCREMENT,
+ `id_group` bigint(20) NOT NULL, 
+ `id_user` bigint(20) NOT NULL,  
+  PRIMARY KEY (`id`),
+  KEY `FKjphvwvn8nahsmtrq1166birpv` (`id_group`),
+  KEY `FKpapfixqqro3n8ln7bd2n8uvya` (`id_user`),
+  CONSTRAINT `FKjphvwvn8nahsmtrq1166birpv` FOREIGN KEY (`id_group`) REFERENCES `groups` (`id`),
+  CONSTRAINT `FKpapfixqqro3n8ln7bd2n8uvya` FOREIGN KEY (`id_user`) REFERENCES `user_model` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `info`.`user_groups`(`id_user`,`id_group`) VALUES(1, 1);
 
 
 
