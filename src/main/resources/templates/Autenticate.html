@@ -17,14 +17,10 @@
 <div class="header">
   <a href="/autenticate" class="logo"><img src="/assets/img/logo.png" width="130"></a>
   <div class="header-right">
-    <a href="#" class="hed">Os melhores eventos para você !</a>
+   
      <span class="dropdown">
-    <button class="dropbtn" id="active" th:text="${#authentication.principal.userModel.name}">
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-  
-      <a href="/logout">Logout</a>
+   
+      <a  th:text="${#authentication.principal.userModel.name}"></a>
     </div>
   </span> 
     
