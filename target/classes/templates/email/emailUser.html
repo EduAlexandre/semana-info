@@ -126,8 +126,11 @@ a, a:hover {
 			padding-top: 15px; 
 			color: #FFFFFF;
 			font-family: sans-serif;" class="paragraph"
-			th:text="|Olá ${ag.name} Para concluir se cadastro click no botão abaixo e faça login|">
+			th:text="|Olá ${ag.name} Para concluir o cadastro click no botão abaixo e ative sua conta|">
 		</td>
+		<td th:text="|Seus dados de acesso|"></td>
+		<td th:text="|Login: ${ag.email}|"></td>
+		<td th:text="|Senha: ${ag.password}|"></td>
 	</tr>
 
 	<!-- BUTTON -->
@@ -136,7 +139,7 @@ a, a:hover {
 		<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
 			padding-top: 25px;
 			padding-bottom: 5px;" class="button">
-			<a th:href="@{http://localhost:9000/usuarios/participante/} + ${ag.id}" target="_blank" style="text-decoration: underline;">Login</a>
+			<a th:href="@{http://localhost:9000/usuarios/participante/} + ${ag.id}" target="_blank" style="text-decoration: underline;">Ativar conta!</a>
 		</td>
 	</tr>
 

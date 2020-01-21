@@ -39,27 +39,34 @@ public class ActivityService {
 	}
 
 	
-	public void registration(Registrations registrations) {
+	public String registration(Registrations registrations) {
 		
-		registrationsRepository.save(registrations);
+		
+		Boolean activiCheck = registrationsRepository.pickForIdActivity(registrations.getActivity().getId()) == null;
+		
+		if(activiCheck == false) {
+			return "false";
+		}else {
+			Boolean regisCheck = registrationsRepository.PickForTimeIni(registrations.getTimeIniActivy()) == null;
+			
+			if (regisCheck == false) {
+				return "existe";
+			}else {
+				registrationsRepository.save(registrations);
+				return "true";
+			}
+			
+		}
 		
 	}
 	
-	public boolean updateAmount(Activity activity,int vaga) {
+	public void updateAmount(Activity activity,int vaga) {
+	
+		Activity activityVerifi = activityRepository.findById(activity.getId()).get(); 
+		activityVerifi.setAmountVacancies(activityVerifi.getAmountVacancies() - vaga);
 		
-		Boolean activiCheck = registrationsRepository.pickForIdActivity(activity.getId()) == null;
-		System.out.println(activiCheck);
-		if(activiCheck == false) {
-			Activity activityVerifi = activityRepository.findById(activity.getId()).get(); 
-			activityVerifi.setAmountVacancies(activityVerifi.getAmountVacancies() - vaga);
-			
-			return true;
-		}else {
-			return false;
-		}
-		
-		
-		
+		activityRepository.save(activityVerifi);
+
 	}
 	
 	
@@ -68,7 +75,6 @@ public class ActivityService {
 		return activityRepository.pikActivityForUser(id);
 	}
 
-	
 	//PALESTRANTE
 	
 	

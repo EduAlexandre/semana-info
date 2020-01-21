@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ifpe.semanainfo.model.Activity;
 import com.ifpe.semanainfo.model.Registrations;
@@ -60,15 +61,19 @@ public class ActivityController {
 	}
 	
 	@PostMapping("/inscricao")
-	public String inscricao(Registrations registrations,Model model) {
+	public String inscricao(Registrations registrations,RedirectAttributes ra) {
 		
-		activityService.registration(registrations);
-		
-		if(activityService.updateAmount(registrations.getActivity(),1) == true) {
-			model.addAttribute("mensagemErro", "1");
+		String regisCheck = activityService.registration(registrations);
+		System.out.println(regisCheck+"---regs");
+		if(regisCheck == "true") {
+			activityService.updateAmount(registrations.getActivity(),1);
+			ra.addFlashAttribute("mensagemErro", "1");
+			return "redirect:/user";
+		}else if(regisCheck == "existe"){
+			ra.addFlashAttribute("mensagemErro", "3");
 			return "redirect:/user";
 		}else{
-			model.addAttribute("mensagemErro", "2");
+			ra.addFlashAttribute("mensagemErro", "2");
 			return "redirect:/user";
 		}
 		

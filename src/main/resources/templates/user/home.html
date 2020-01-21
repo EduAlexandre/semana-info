@@ -15,6 +15,49 @@
   <script>hljs.initHighlightingOnLoad();</script>
 
 	<title>Home</title>
+    
+    <!-- CDN das Mensagens -->
+	  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  	
+  	<script>
+        $(document).ready(function(){       
+                  
+            
+            toastr.options = {
+            	"closeButton": true,
+           		"debug": false,
+           		"newestOnTop": false,
+           		"progressBar": true,
+           		"positionClass": "toast-top-center",
+           		"preventDuplicates": true,
+           		"onclick": null,
+           		"showDuration": "200",
+           		"hideDuration": "1000",
+           		"timeOut": "7000",
+           		"extendedTimeOut": "10000",
+           		"showEasing": "swing",
+           		"hideEasing": "linear",
+           		"showMethod": "fadeIn",
+           		"hideMethod": "fadeOut"
+        	}
+            
+            	
+            var t = $("#mensagemErro").text();
+            
+            switch(t){
+            case "1":
+            	toastr.success("Inscrição realizada!");
+            	break;
+            case "2":
+            	toastr.info("Voçẽ já esta incrito nesta palestra!");
+            	break;
+            case "3":
+            	toastr.info("Voçê já esta cadastrado em uma palestra neste horario!");
+            	break;
+	        }
+        });
+  	</script>
 	
 </head>
 <body><div class="header">
@@ -40,7 +83,7 @@
 			Obrigado por se juntar, <span th:text="${#authentication.principal.userModel.name}"></span>.<br>
       Agora só basta escolher a palestra ideal para você!
 	</h1>
-	<span th:text="${mensagemErro}"></span>
+	<span id="mensagemErro" th:text="${mensagemErro}"></span>
 
 </div>
 

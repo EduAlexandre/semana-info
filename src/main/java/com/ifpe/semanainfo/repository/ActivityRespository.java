@@ -20,5 +20,8 @@ public interface ActivityRespository extends JpaRepository<Activity, Integer> {
 	
 	@Query(value =  "select * from activity a join registrations r on a.id = r.activity_id where r.user_id = ?1", nativeQuery = true)
 	public List<Activity> pikActivityForUser(Integer id);
+
+
+
 }
 

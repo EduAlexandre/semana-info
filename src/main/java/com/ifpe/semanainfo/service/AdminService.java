@@ -54,11 +54,14 @@ public class AdminService {
 		user.setActive(false);
 		user.setCodGrup(4);
 		
-		String newSenhaCrip = GeneratePassword.cripto(user.getPassword());
+		String senha = user.getPassword();
+		
+		String newSenhaCrip = GeneratePassword.cripto(senha);
 		user.setPassword(newSenhaCrip);
 		
 		repositoryUser.save(user);
 		
+		user.setPassword(senha);
 		mailUser.enviar(user);
 	}
 	

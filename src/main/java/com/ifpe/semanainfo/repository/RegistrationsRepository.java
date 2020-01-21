@@ -18,6 +18,12 @@ public interface RegistrationsRepository extends JpaRepository<Registrations, In
 	
 	@Query(value =  "select * from registrations where activity_id = ?1", nativeQuery = true)
 	public Registrations pickForIdActivity(Integer id);
+
+	@Query(value =  "select * from registrations where time_ini_activy = ?1", nativeQuery = true)
+	public Registrations PickForTimeIni(String timeIniActivy);
+
+	
+	
 	
 	
 

@@ -80,5 +80,36 @@ $(document).ready(function(){
 })
 	
 </script>
+<script>
+$(document).ready(function(){	
+	var stackedCard = new stackedCards({
+	 	selector: '.stacked-cards',
+	 	layout: "fanOut",
+	 	transformOrigin: "bottom",
+	});
+
+	stackedCard.init();	
+
+})
+</script>
 <script src='/assets/js/frameWorks/app.js'></script>
+<script src="/assets/js/frameWorks/stackedCards.min.js"></script>
+
+	<script>
+		var stackedCardSlide = new stackedCards({
+		 	selector: '.stacked-cards-slide',
+		 	layout: "slide",
+		 	transformOrigin: "center",
+		 });
+
+		stackedCardSlide.init();
+
+		var stackedCardFanOut = new stackedCards({
+		 	selector: '.stacked-cards-fanOut',
+		 	layout: "fanOut",
+		 	transformOrigin: "bottom",
+		 });
+
+		stackedCardFanOut.init();
+	</script>
 </html>
