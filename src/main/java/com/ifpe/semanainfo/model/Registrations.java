@@ -11,7 +11,7 @@ public class Registrations {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id_registration;
 
 	@ManyToOne
 	private Activity activity;
@@ -19,14 +19,14 @@ public class Registrations {
 	@ManyToOne
 	private UserModel user;
 	
-	private String timeIni;
+	private String timeIniActivy;
 
-	public Integer getId() {
-		return id;
+	public Integer getId_registration() {
+		return id_registration;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId_registration(Integer id_registration) {
+		this.id_registration = id_registration;
 	}
 
 	public Activity getActivity() {
@@ -45,13 +45,14 @@ public class Registrations {
 		this.user = user;
 	}
 
-	public String getTimeIni() {
-		return timeIni;
+	public String getTimeIniActivy() {
+		return timeIniActivy;
 	}
 
-	public void setTimeIni(String timeIni) {
-		this.timeIni = timeIni;
+	public void setTimeIniActivy(String timeIniActivy) {
+		this.timeIniActivy = timeIniActivy;
 	}
+
 
 
 

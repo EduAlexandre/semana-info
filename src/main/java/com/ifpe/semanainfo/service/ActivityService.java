@@ -38,6 +38,46 @@ public class ActivityService {
 		this.activityRepository.deleteById(id);
 	}
 
+	
+	public void registration(Registrations registrations) {
+		
+		registrationsRepository.save(registrations);
+		
+	}
+	
+	public boolean updateAmount(Activity activity,int vaga) {
+		
+		Boolean activiCheck = registrationsRepository.pickForIdActivity(activity.getId()) == null;
+		System.out.println(activiCheck);
+		if(activiCheck == false) {
+			Activity activityVerifi = activityRepository.findById(activity.getId()).get(); 
+			activityVerifi.setAmountVacancies(activityVerifi.getAmountVacancies() - vaga);
+			
+			return true;
+		}else {
+			return false;
+		}
+		
+		
+		
+	}
+	
+	
+	//Usuario
+	public List<Activity> pickAllForUser(Integer id) {
+		return activityRepository.pikActivityForUser(id);
+	}
+
+	
+	//PALESTRANTE
+	
+	
+	//VALIDAÇOES
+	public Registrations verificaTimeIniUser(String time, Integer id) {
+
+		return registrationsRepository.pickTimeIniUser(time,id);
+	}
+	
 	public Activity verificaTimeIni(String time,String room) {
 		return activityRepository.PickTimeIni(time,room);
 	}
@@ -50,24 +90,17 @@ public class ActivityService {
 		return activityRepository.PickTimeSpeaker(time,palestrante);
 	}
 
-	public void registration(Registrations registrations) {
-		
-		registrationsRepository.save(registrations);
-		
-	}
 	
-	public List<Registrations> PickMyActivitys(Integer id) {
+
+	public void deleteRegistration(Integer id) {
 		
-		return registrationsRepository.findAllByUserId(id);
+		Activity activity = activityRepository.findById(id).get();
+		activity.setAmountVacancies(activity.getAmountVacancies() + 1);
+		
+		Registrations registrations= registrationsRepository.pickForIdActivity(id);
+		
+		registrationsRepository.deleteById(registrations.getId_registration());
 		
 	}
 
-	public Registrations verificaTimeIniUser(String time, Integer id) {
-
-		return registrationsRepository.pickTimeIniUser(time,id);
-	}
-
-	public List<Activity> pickAllForSpeaker(String nome) {
-		return activityRepository.pik(nome);
-	}
 }

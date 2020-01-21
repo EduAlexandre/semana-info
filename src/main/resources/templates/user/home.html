@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<link rel="stylesheet" type="text/css" href="/assets/css/indexlo.css">
   <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
@@ -38,6 +40,7 @@
 			Obrigado por se juntar, <span th:text="${#authentication.principal.userModel.name}"></span>.<br>
       Agora só basta escolher a palestra ideal para você!
 	</h1>
+	<span th:text="${mensagemErro}"></span>
 
 </div>
 
@@ -72,7 +75,7 @@
                 			<option selected th:value="${#authentication.principal.userModel.id}" th:text="${#authentication.principal.userModel.id}"></option>
                 		</select>
                 		
-                		<select th:field="*{timeIni}" id="timeIni" style="opacity: 0;">
+                		<select th:field="*{timeIniActivy}" id="timeIni" style="opacity: 0;">
                 			<option selected th:value="${list.timeIni}" th:text="${list.timeIni}"></option>
                 		</select>
                 		

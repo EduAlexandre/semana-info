@@ -35,15 +35,9 @@
     
   </div>
 </div>
-<div class="let">
-	<h1 class="h1-1">
-			Obrigado por se juntar, <span th:text="${#authentication.principal.userModel.name}"></span>.<br>
-      Agora só basta escolher a palestra ideal para você!
-	</h1>
-	<span th:text="${mensagemErro}"></span>
 
-</div>
-
+<div class="container">
+	
 	<div class="container-fixed stacked-cards stacked-cards-fanOut">
 			<h2>Palestras</h2>
 			<ul>
@@ -65,69 +59,26 @@
                 	
                 	<p class="front-3">Horario: <span th:text="${list.timeIni}"></span> ás <span th:text="${list.timeFim}"></span></p>
                 	
-                	
-                	<form id="formregister" th:action="@{/inscricao}" th:object="${registrations}" method="post">
-                		<select th:field="*{activity}" style="opacity: 0;">
-                			<option  selected th:value="${list.id}" th:text="${list.id}"></option>
-                		</select>
-                		
-                		<select th:field="*{user}" id="idUser" style="opacity: 0;">
-                			<option selected th:value="${#authentication.principal.userModel.id}" th:text="${#authentication.principal.userModel.id}"></option>
-                		</select>
-                		
-                		<select th:field="*{timeIniActivy}" id="timeIni" style="opacity: 0;">
-                			<option selected th:value="${list.timeIni}" th:text="${list.timeIni}"></option>
-                		</select>
-                		
-                		<button th:if="${list.amountVacancies} != 0" type="submit" id="button" class="pres submit">Inscrever-se</button>
-                	</form>
+                	<a th:href="@{/cancelIncricao/}+${list.id}"><button  type="submit" id="button" class="pres submit">cancelar inscrição</button></a>
 				</li>
 			</ul>
 		</div>
+</div>
+ 
 
 <footer class="footer">
  © Todos os Direitos reservados! TT'S EVENTS .
 </footer>
 
+
 </body>
 <script>
-$(document).ready(function(){	
-	var stackedCard = new stackedCards({
-	 	selector: '.stacked-cards',
-	 	layout: "fanOut",
-	 	transformOrigin: "bottom",
-	});
-
-	stackedCard.init();	
-
+$(document).ready(function(){
+	$(".cards__container").children().first().removeClass("box--hide");
+	
+	$("#tbn").click();
 })
+	
 </script>
 <script src='/assets/js/frameWorks/app.js'></script>
-<script src="/assets/js/frameWorks/stackedCards.min.js"></script>
-
-	<script>
-		var stackedCardSlide = new stackedCards({
-		 	selector: '.stacked-cards-slide',
-		 	layout: "slide",
-		 	transformOrigin: "center",
-		 });
-
-		stackedCardSlide.init();
-
-		var stackedCardFanOut = new stackedCards({
-		 	selector: '.stacked-cards-fanOut',
-		 	layout: "fanOut",
-		 	transformOrigin: "bottom",
-		 });
-
-		stackedCardFanOut.init();
-	</script>
-	
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
-		
-	
-    <script src="/assets/js/validacoesforms.js"></script>
 </html>

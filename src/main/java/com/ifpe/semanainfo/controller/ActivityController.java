@@ -60,13 +60,26 @@ public class ActivityController {
 	}
 	
 	@PostMapping("/inscricao")
-	public String inscricao(Registrations registrations) {
+	public String inscricao(Registrations registrations,Model model) {
 		
 		activityService.registration(registrations);
 		
-		return "redirect:/user";
+		if(activityService.updateAmount(registrations.getActivity(),1) == true) {
+			model.addAttribute("mensagemErro", "1");
+			return "redirect:/user";
+		}else{
+			model.addAttribute("mensagemErro", "2");
+			return "redirect:/user";
+		}
+		
 	}
 	
-	
+	@GetMapping("/cancelIncricao/{id}")
+	public String cancelIncricao(@PathVariable("id") Integer id) {
+		
+		activityService.deleteRegistration(id);
+		
+		return "redirect:/user";
+	}
 
 }

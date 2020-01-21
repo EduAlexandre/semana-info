@@ -17,7 +17,8 @@ public interface ActivityRespository extends JpaRepository<Activity, Integer> {
 
 	@Query(value =  "select * from activity where time_ini = ?1 AND speaker = ?2", nativeQuery = true)
 	public Activity PickTimeSpeaker(String time,String palestrante);
-
-	@Query(value =  "select * from activity where speaker = ?1", nativeQuery = true)
-	public List<Activity> pik(String nome);
+	
+	@Query(value =  "select * from activity a join registrations r on a.id = r.activity_id where r.user_id = ?1", nativeQuery = true)
+	public List<Activity> pikActivityForUser(Integer id);
 }
+

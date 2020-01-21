@@ -2,12 +2,11 @@ package com.ifpe.semanainfo.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ifpe.semanainfo.model.Activity;
 import com.ifpe.semanainfo.model.Groups;
@@ -60,15 +59,11 @@ public class UsuarioContoller {
 	
 	
 	@GetMapping("/palestra/{id}")
-	public String showMy(Model model,@PathParam("id")Integer id) {
-		
-		List<Registrations> registrations2 = activityService.PickMyActivitys(id);
-		System.out.println(registrations2);
-		
-		Integer i = registrations2.size();
-		System.out.println(i);
-		
-		return "redirect:/user";
+	public String showMy(Model model,@PathVariable("id")Integer id) {
+		List<Activity> registrations = activityService.pickAllForUser(id);
+		model.addAttribute("activitys", registrations);
+		System.out.println(registrations.toString());
+		return "/user/listMyActivitys";
 	}
 	
 

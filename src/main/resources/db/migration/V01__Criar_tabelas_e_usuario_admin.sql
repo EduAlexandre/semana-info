@@ -111,51 +111,26 @@ CREATE TABLE `activity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `amount_vacancies` int(11) NOT NULL,
   `name_event` varchar(255) DEFAULT NULL,
-  `speaker_id` bigint(20) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `room` varchar(255) DEFAULT NULL,
   `speaker` varchar(255) DEFAULT NULL,
   `time_fim` varchar(255) DEFAULT NULL,
   `time_ini` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKn1urcb09qwsseogaal7wt7opw` (`speaker_id`),
-  CONSTRAINT `FKn1urcb09qwsseogaal7wt7opw` FOREIGN KEY (`speaker_id`) REFERENCES `user_model` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `activity_room` (
-  `activity_id` int(11) NOT NULL,
-  `room_id` int(11) NOT NULL,
-  KEY `FK4avct6mfbs3tbs9r249r3rexs` (`room_id`),
-  KEY `FKde88dws78lvqx5oiomvbx8nhf` (`activity_id`),
-  CONSTRAINT `FK4avct6mfbs3tbs9r249r3rexs` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`),
-  CONSTRAINT `FKde88dws78lvqx5oiomvbx8nhf` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE `registrations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `time_ini` varchar(255) DEFAULT NULL,
+  `id_registration` int(11) NOT NULL AUTO_INCREMENT,
+  `time_ini_activy` varchar(255) DEFAULT NULL,
   `activity_id` int(11) DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id_registration`),
   KEY `FKedlyh8d29976nq7j2gyhjecbo` (`activity_id`),
   KEY `FKrn1ikib33h9pyku93jyusdioy` (`user_id`),
   CONSTRAINT `FKedlyh8d29976nq7j2gyhjecbo` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`id`),
   CONSTRAINT `FKrn1ikib33h9pyku93jyusdioy` FOREIGN KEY (`user_id`) REFERENCES `user_model` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
-
-
-
-CREATE TABLE `room_activity` (
-  `room_id` int(11) NOT NULL,
-  `activity_id` int(11) NOT NULL,
-  UNIQUE KEY `UK_fhm5gv6tdtpif95elnf04pbv0` (`activity_id`),
-  KEY `FK1twkcn7sg7gok96hutkxae2gk` (`room_id`),
-  CONSTRAINT `FK1twkcn7sg7gok96hutkxae2gk` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`),
-  CONSTRAINT `FKcq1ej30640wvc222vvywibcvy` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 
 CREATE TABLE `user_groups` (
