@@ -4,6 +4,7 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/assets/css/indexlo.css">
 	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/indexGe.css}">
 	<link rel="stylesheet" type="text/css" href="/assets/css/frameWorks/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
@@ -34,7 +35,7 @@
 <div class="container-ge">
 <div class="row">
 	<div class="col">
-	<h1 class="h1-1ge">Seja Bem Vindo, <span th:text="${#authentication.principal.userModel.name}"></span><br>
+	<h1 class="h1-1ge">Seja Bem Vindo, <span th:text="${#authentication.principal.userModel.name}"	></span><br>
 	<span class="span-ge">Agora você já pode cadastrar, editar, remover palestras e adicionar palestrantes.</span>
 	</h1>
 	
@@ -59,43 +60,90 @@
 
 
 
+	<div class="container-fixed stacked-cards stacked-cards-fanOut">
+			<h2 class="vai">Palestras Registradas</h2>
+			<ul>
+				<li th:each="list : ${activitys}" class="card">
+					
+					<p class="car-ph1">
+						<span th:text="${list.nameEvent}"></span>
+						<span id="status" th:if="${list.amountVacancies != 0}" class="on1">Disponivel</span>
+						<span id="status" th:if="${list.amountVacancies == 0}" class="off1">Indisponivel</span>
+					</p>
+	                	
+                	<p class="car-p">Palestrante :  <span th:text="${list.speaker}" class="car-p"></span></p>
+                	
+                	<p class="car-p">Vagas: <span th:text="${list.amountVacancies}"></span> </p>
+                	
+                	<p class="car-p">Sala: <span th:text="${list.room}"></span> </p>
+                	
+                	<p class="car-p">Descrição: <span th:text="${list.description}" ></span> </p>
+                	
+                	<p class="car-p">Horario: <span th:text="${list.timeIni}"></span> ás <span th:text="${list.timeFim}"></span></p>
+                	
+                	<div class="but-ex">
+       <a th:href="@{/editePalestra/{cod}(cod=${list.id})}" class="ed"> Editar  </a>
+       <a th:href="@{/deletePalestra/{cod}(cod=${list.id})}" class="ex">Excluir</a>
+       </div>
+				</li>
+			</ul>
+		</div>
 
 
 
-<div class="container">
+
+<script>
+$(document).ready(function(){	
+	var stackedCard = new stackedCards({
+	 	selector: '.stacked-cards',
+	 	layout: "fanOut",
+	 	transformOrigin: "bottom",
+	});
+
+	stackedCard.init();	
+
+})
+</script>
+<script src='/assets/js/frameWorks/app.js'></script>
+<script src="/assets/js/frameWorks/stackedCards.min.js"></script>
+
+	<script>
+		var stackedCardSlide = new stackedCards({
+		 	selector: '.stacked-cards-slide',
+		 	layout: "slide",
+		 	transformOrigin: "center",
+		 });
+
+		stackedCardSlide.init();
+
+		var stackedCardFanOut = new stackedCards({
+		 	selector: '.stacked-cards-fanOut',
+		 	layout: "fanOut",
+		 	transformOrigin: "bottom",
+		 });
+
+		stackedCardFanOut.init();
+	</script>
 	
-	<div id="caixa">
-		<div class="button 1" onclick="shiftLeft()"><img src="https://image.ibb.co/mRsEb7/left_arrow.png" alt=""></div>
-        <div class="cards-wrapper">
-           <table border="1">
-	    <tr>
-	        <td>Nome</td>
-	        <td>Palestrante</td>
-	        <td>Nº Vagas</td>
-	        <td>sala</td>
-	        <td>Descrição</td>
-	        <td>início</td>
-	        <td>fim</td>
-	        <td colspan="2">Ações</td>
-	    </tr>
-	    <tr th:each="list : ${activitys}">
-	        <td th:text="${list.nameEvent}"></td>
-	        <td th:text="${list.speaker}"></td>
-	        <td th:text="${list.amountVacancies}"></td>
-	        <td th:text="${list.room}"></td>
-	        <td th:text="${list.description}"></td>
-	        <td th:text="${list.timeIni}"></td> 
-	        <td th:text="${list.timeFim}"></td>
-	       
-	        <td><a th:href="@{/editePalestra/{cod}(cod=${list.id})}">Editar</a></td>
-	        <td><a th:href="@{/deletePalestra/{cod}(cod=${list.id})}">Delete</a></td>
-	    </tr>
-	</table> 
-        </div>
-        <div id="tbn" class="button 2" onclick="shiftRight()"><img src="https://image.ibb.co/dfPSw7/right_arrow.png" alt=""></div>
-	</div>
-</div>
- 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/assets/js/validacoesforms.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <footer class="footer">
  © Todos os Direitos reservados! 

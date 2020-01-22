@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8">	<link rel="stylesheet" type="text/css" href="/assets/css/indexlo.css">
 	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/indexGe.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/cards.css}">
 	<link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
@@ -30,7 +30,6 @@
   </div>
 </div>
 
-
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -45,39 +44,42 @@
 
 
 
-
+<center>
 
 	<form id="cadPalestra" class="log" th:action="@{/activitySave}" th:object="${activity}" method="post">
 
-       	<h1 class="h1">Cadastro De Palestras</h1>
+       	<h1 class="h1-cp">Cadastro De Palestras</h1>
 
 		<label>Nome</label><br>
-        <input type="text" placeholder="Nome do evento" th:field="*{nameEvent}" required><br><br>
+        <input type="text" placeholder="Nome do evento" class="form-contact-input-int-tra" th:field="*{nameEvent}" required><br>
 
         <label>Vagas</label><br>
-        <input type="text" th:field="*{amountVacancies}" required><br><br>
+        <input type="text" th:field="*{amountVacancies}" class="form-contact-input-int-tra" required><br>
         
-        <label>Descrição</label><br><br>
-        <textarea rows="6" cols="32" th:field="*{description}" style="resize:none" required></textarea><br><br>
+        <label>Descrição</label><br>
+        <textarea rows="6" cols="32" th:field="*{description}"  class="form-contact-txt-int-tra" style="resize:none" required></textarea><br>
         
+         <label>Palestrante</label><br>
         <select th:field="*{speaker}" id="palestrante" required>
         	<option th:each="list : ${speakers}" th:value="${list.name}" th:text="${list.name}"></option>
         </select><br><br>
         
+        <label>Sala</label><br>
         <select th:field="*{room}" id="sala" required>
-        	<option th:each="list : ${rooms}" th:value="${list.nome}" th:text="${list.nome}"></option>
+        	<option th:each="list : ${rooms}" th:value="${list.nome}"  th:text="${list.nome}"></option>
         </select><br><br>
         
-        <label>Horario de inicio</label>
-        <input type="time" th:field="*{timeIni}" id="timeIni" required><br><br>
+        <label>Horario de inicio</label><br>  
+        <input type="time" th:field="*{timeIni}" id="timeIni" class="form-contact-input-int-tra" required><br>
         
-        <label>Horario do Fim</label>
-        <input type="time" th:field="*{timeFim}" id="timeFim" required><br><br>
+        <label>Horario do Fim</label><br>
+        <input type="time" th:field="*{timeFim}" id="timeFim" class="form-contact-input-int-tra" required>
         
         
             
-        <br><button class="but" type="submit">Enviar</button>
-     </form>
+        <br><button  class="form-contact-button" type="submit">Enviar</button>
+</form>
+</center>
      <script>
 // Get the modal
 var modal = document.getElementById("myModal");

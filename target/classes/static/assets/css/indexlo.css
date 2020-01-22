@@ -442,18 +442,16 @@ color:white;
 
 }
 .front-2{
-padding-top: 0px;
+margin-top:20px;
   font-family: "Raleway";
   color:white;
   font-size: 16px;
 
 }
 
-
-
 .on{
 	padding: 7px;
-	border-radius: 5px 0px 5px 0px;
+	
 	font-size: 10px;
 	font-family: "play";
 	background-color: green;
