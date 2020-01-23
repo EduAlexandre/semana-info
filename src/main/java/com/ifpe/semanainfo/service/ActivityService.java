@@ -9,6 +9,7 @@ import com.ifpe.semanainfo.model.Activity;
 import com.ifpe.semanainfo.model.Registrations;
 import com.ifpe.semanainfo.repository.ActivityRespository;
 import com.ifpe.semanainfo.repository.RegistrationsRepository;
+import com.ifpe.semanainfo.util.Functions;
 
 @Service
 public class ActivityService {
@@ -20,8 +21,9 @@ public class ActivityService {
 	private RegistrationsRepository registrationsRepository;
 	
 	public void saveActivity(Activity activity) {
-
-		System.out.println(activity.getRoom());
+		
+		String duracao = Functions.duracao(activity.getTimeIni(), activity.getTimeFim());
+		activity.setDuracao(duracao);
 		
 		activityRepository.save(activity);
 	}

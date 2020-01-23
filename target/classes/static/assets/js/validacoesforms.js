@@ -69,6 +69,8 @@ $(document).ready(function(){
 			},
 			senha:{
 				required: true,
+				maxlength:12,
+				minlength: 6,
 			},
 			password:{
 				required: true,
@@ -97,6 +99,8 @@ $(document).ready(function(){
 			},
 			senha:{
 				required: "Este campo é obrigatório.",
+				maxlength: "Maximo de caracteres permitidos 12",
+				minlength: "A senha deve ter no minimo 6 caracteres",
 			},
 			password:{
 				required: "O campo confirmação de senha é obrigatório.",
@@ -199,7 +203,7 @@ $(document).ready(function(){
 		messages:{
 			nameEvent:{
 				required:"Este campo é obrigatório.",
-				maxlength: 100,
+				maxlength: "Maximo de caracteres permitido é 100",
 			},
 			amountVacancies:{
 				required: "Este campo é obrigatório.",
@@ -284,6 +288,46 @@ $(document).ready(function(){
 			},
 			timeIni:{
 				remote: "oio"
+			}
+		}
+				
+	});
+	
+	//FORM CAD GESTOR
+	$("#Gestor").validate({
+		rules:{			
+			name:{
+				required: true,
+				maxlength: 100,
+			},
+			email:{
+				required: true,
+				remote:{
+					url: '/verificationEmail',
+					type: "get",
+					dataType: "json",
+					data:{
+						email: function()
+	                      {
+	                          return $('#email').val();
+	                      }
+	
+					}
+				}
+			},
+			submitHandler: function(form){
+				form.submit()
+			}
+			
+		},
+		messages:{
+			name:{
+				required: "Este campo é obrigatório.",
+				maxlength: "Maximo de caracteres permitido é 100",
+			},
+			email:{
+				required: "Este campo é obrigatório.",
+				remote: "Email informado já está vinculado a uma conta!",
 			}
 		}
 				

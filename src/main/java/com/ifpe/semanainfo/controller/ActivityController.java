@@ -29,15 +29,15 @@ public class ActivityController {
 	@Autowired
 	private AdminService adminService;
 	
-	@PostMapping("/activitySave")
+	@PostMapping("activitySave")
 	public String saveRoom(Activity activity, Model model){
 		
 		activityService.saveActivity(activity);
 
-		return "redirect:/manager";
+		return "redirect:manager";
 	}
 	
-	@GetMapping("/editePalestra/{id}")
+	@GetMapping("editePalestra/{id}")
 	public String edite(@PathVariable("id") Integer id ,Model model) {
 		
 		Activity activity = activityService.get(id);
@@ -49,18 +49,18 @@ public class ActivityController {
 		List<Room> rooms = roomService.listAll();
 		model.addAttribute("rooms", rooms);
 		
-		return "/manager/edite";
+		return "manager/edite";
 	}
 	
-	@GetMapping("/deletePalestra/{id}")
+	@GetMapping("deletePalestra/{id}")
 	public String excluir(@PathVariable("id") Integer id ) {
 		
 		activityService.deleteActivity(id);
 		
-		return "redirect:/manager";
+		return "redirect:manager";
 	}
 	
-	@PostMapping("/inscricao")
+	@PostMapping("inscricao")
 	public String inscricao(Registrations registrations,RedirectAttributes ra) {
 		
 		String regisCheck = activityService.registration(registrations);
@@ -68,13 +68,13 @@ public class ActivityController {
 		if(regisCheck == "true") {
 			activityService.updateAmount(registrations.getActivity(),1);
 			ra.addFlashAttribute("mensagemErro", "1");
-			return "redirect:/user";
+			return "redirect:user";
 		}else if(regisCheck == "existe"){
 			ra.addFlashAttribute("mensagemErro", "3");
-			return "redirect:/user";
+			return "redirect:user";
 		}else{
 			ra.addFlashAttribute("mensagemErro", "2");
-			return "redirect:/user";
+			return "redirect:user";
 		}
 		
 	}

@@ -28,6 +28,7 @@ public class Activity {
 	
 	private String timeFim;
 	
+	private String duracao;
 		
 	public Integer getId() {
 		return id;
@@ -91,6 +92,14 @@ public class Activity {
 
 	public void setTimeFim(String timeFim) {
 		this.timeFim = timeFim;
+	}
+
+	public String getDuracao() {
+		return duracao;
+	}
+
+	public void setDuracao(String duracao) {
+		this.duracao = duracao;
 	}
 
 

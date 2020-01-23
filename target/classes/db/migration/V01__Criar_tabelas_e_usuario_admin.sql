@@ -116,6 +116,7 @@ CREATE TABLE `activity` (
   `speaker` varchar(255) DEFAULT NULL,
   `time_fim` varchar(255) DEFAULT NULL,
   `time_ini` varchar(255) DEFAULT NULL,
+  `duracao`  varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
@@ -125,6 +126,7 @@ CREATE TABLE `registrations` (
   `time_ini_activy` varchar(255) DEFAULT NULL,
   `activity_id` int(11) DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL,
+  `presenca` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_registration`),
   KEY `FKedlyh8d29976nq7j2gyhjecbo` (`activity_id`),
   KEY `FKrn1ikib33h9pyku93jyusdioy` (`user_id`),

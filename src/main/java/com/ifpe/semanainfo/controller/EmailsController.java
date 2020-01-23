@@ -14,29 +14,29 @@ public class EmailsController {
 	@Autowired
 	private AdminService  adminService;
 	
-	@PostMapping("/emailManager")
+	@PostMapping("emailManager")
 	public String envMailManager(UserModel manager,RedirectAttributes ra) {
 		
 		adminService.saveManager(manager);
 		
-		return "redirect:/admin/novo";
+		return "redirect:admin/novo";
 	}
 	
-	@PostMapping("/emailSpeaker")
+	@PostMapping("emailSpeaker")
 	public String envMailSpeaker(UserModel speaker,RedirectAttributes ra) {
 		
 		adminService.saveSpeaker(speaker);
 		ra.addFlashAttribute("mensagemErro", "1");
 		
-		return "redirect:/manager";
+		return "redirect:manager";
 	}
 	
-	@PostMapping("/emailUser")
+	@PostMapping("emailUser")
 	public String envMailUser(UserModel user ,RedirectAttributes ra) {
 		
 		adminService.saveUser(user);
 		ra.addFlashAttribute("mensagemErro", "4");
 		
-		return "redirect:/login";
+		return "redirect:login";
 	}
 }

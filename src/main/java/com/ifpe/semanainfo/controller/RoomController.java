@@ -16,12 +16,12 @@ public class RoomController {
 	@Autowired
 	private RoomService roomService;
 	
-	@GetMapping("/cadastroSala")
+	@GetMapping("cadastroSala")
 	public String roomRegistration(Room room, Model model){
 		model.addAttribute("room", room);
 		return "/teste";
 	}
-	@PostMapping("/salvaSala")
+	@PostMapping("salvaSala")
 	public String saveRoom(Room room, Model model){
 		this.roomService.saveRoom(room);
 		UserModel manager = new UserModel();

@@ -20,6 +20,8 @@ public class Registrations {
 	private UserModel user;
 	
 	private String timeIniActivy;
+	
+	private Boolean presenca;
 
 	public Integer getId_registration() {
 		return id_registration;
@@ -53,8 +55,12 @@ public class Registrations {
 		this.timeIniActivy = timeIniActivy;
 	}
 
+	public Boolean getPresenca() {
+		return presenca;
+	}
 
-
-
+	public void setPresenca(Boolean presenca) {
+		this.presenca = presenca;
+	}
 	
 }

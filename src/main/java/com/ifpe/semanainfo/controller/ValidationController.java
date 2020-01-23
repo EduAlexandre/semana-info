@@ -20,7 +20,7 @@ public class ValidationController {
 	@Autowired
 	private ActivityService activityService;
 
-	@GetMapping("/verificationEmail")
+	@GetMapping("verificationEmail")
 	@ResponseBody
 	public String valideEmail(@PathParam("email") String email) {
 		
@@ -31,7 +31,7 @@ public class ValidationController {
 		
 	}
 	
-	@GetMapping("/verificationCPF")
+	@GetMapping("verificationCPF")
 	@ResponseBody
 	public String valideCpf(@PathParam("cpf") String cpf) {
 
@@ -41,7 +41,7 @@ public class ValidationController {
 		
 	}
 	
-	@GetMapping("/verificationTimeIni")
+	@GetMapping("verificationTimeIni")
 	@ResponseBody
 	public String valideTimeIni(@PathParam("time") String time,@PathParam("room") String room) {
 		
@@ -52,7 +52,7 @@ public class ValidationController {
 		
 	}
 	
-	@GetMapping("/verificationTimeFim")
+	@GetMapping("verificationTimeFim")
 	@ResponseBody
 	public String valideTimeFim(@PathParam("time") String time,@PathParam("room") String room) {
 		
@@ -62,7 +62,7 @@ public class ValidationController {
 		
 	}
 	
-	@GetMapping("/verificationTimeSpeaker")
+	@GetMapping("verificationTimeSpeaker")
 	@ResponseBody
 	public String valideTimeSpeaker(@PathParam("time") String time,@PathParam("palestrante") String palestrante) {
 		
@@ -72,11 +72,10 @@ public class ValidationController {
 		
 	}
 	
-	@GetMapping("/verificationTimeIniUser")
+	@GetMapping("verificationTimeIniUser")
 	@ResponseBody
 	public String valideTimeIniUser(@PathParam("time") String time,@PathParam("id") Integer id) {
 		
-		System.out.println(time+"-----"+id);
 		Boolean cpfChecado = activityService.verificaTimeIniUser(time,id) == null;
 			
 		return cpfChecado.toString();
