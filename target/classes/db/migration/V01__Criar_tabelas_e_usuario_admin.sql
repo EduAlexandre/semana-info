@@ -112,6 +112,7 @@ CREATE TABLE `activity` (
   `amount_vacancies` int(11) NOT NULL,
   `name_event` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
+  `data` varchar(255) DEFAULT NULL,
   `room` varchar(255) DEFAULT NULL,
   `speaker` varchar(255) DEFAULT NULL,
   `time_fim` varchar(255) DEFAULT NULL,

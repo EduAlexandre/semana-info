@@ -51,29 +51,32 @@
        	<h1 class="h1-cp">Cadastro De Palestras</h1>
 
 		<label>Nome</label><br>
-        <input type="text" placeholder="Nome do evento" class="form-contact-input-int-tra" th:field="*{nameEvent}" required><br>
+        <input type="text" placeholder="Nome do evento" class="form-contact-input-int-tra" th:field="*{nameEvent}" ><br>
 
         <label>Vagas</label><br>
-        <input type="text" th:field="*{amountVacancies}" class="form-contact-input-int-tra" required><br>
+        <input type="text" th:field="*{amountVacancies}" class="form-contact-input-int-tra"><br>
         
         <label>Descrição</label><br>
-        <textarea rows="6" cols="32" th:field="*{description}"  class="form-contact-txt-int-tra" style="resize:none" required></textarea><br>
+        <textarea rows="6" cols="32" th:field="*{description}"  class="form-contact-txt-int-tra" style="resize:none" ></textarea><br>
+        
+        <label>Data</label><br>
+        <input type="text" th:field="*{data}"  class="form-contact-input-int-tra" data-mask="00/00/0000" placeholder="00/00/0000">   <br>
         
          <label>Palestrante</label><br>
-        <select th:field="*{speaker}" id="palestrante" required>
+        <select th:field="*{speaker}" id="palestrante" >
         	<option th:each="list : ${speakers}" th:value="${list.name}" th:text="${list.name}"></option>
         </select><br><br>
         
         <label>Sala</label><br>
-        <select th:field="*{room}" id="sala" required>
+        <select th:field="*{room}" id="sala" >
         	<option th:each="list : ${rooms}" th:value="${list.nome}"  th:text="${list.nome}"></option>
         </select><br><br>
         
         <label>Horario de inicio</label><br>  
-        <input type="time" th:field="*{timeIni}" id="timeIni" class="form-contact-input-int-tra" required><br>
+        <input type="time" th:field="*{timeIni}" id="timeIni" class="form-contact-input-int-tra" ><br>
         
         <label>Horario do Fim</label><br>
-        <input type="time" th:field="*{timeFim}" id="timeFim" class="form-contact-input-int-tra" required>
+        <input type="time" th:field="*{timeFim}" id="timeFim" class="form-contact-input-int-tra" >
         
         
             
@@ -112,11 +115,11 @@ window.onclick = function(event) {
 </footer>
      
 </body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 		
 	

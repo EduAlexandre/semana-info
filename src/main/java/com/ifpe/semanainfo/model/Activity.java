@@ -29,6 +29,8 @@ public class Activity {
 	private String timeFim;
 	
 	private String duracao;
+	
+	private String data;
 		
 	public Integer getId() {
 		return id;
@@ -102,8 +104,13 @@ public class Activity {
 		this.duracao = duracao;
 	}
 
+	public String getData() {
+		return data;
+	}
 
-	
+	public void setData(String data) {
+		this.data = data;
+	}
 
 
 }
