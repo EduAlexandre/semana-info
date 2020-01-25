@@ -76,9 +76,14 @@
 
 		<dependency>
 			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-			
+			<artifactId>flyway-core</artifactId>			
 		</dependency> 
+		
+		 <!-- https://mvnrepository.com/artifact/com.sendgrid/sendgrid-java -->
+		<dependency>
+		    <groupId>com.sendgrid</groupId>
+		    <artifactId>sendgrid-java</artifactId>    
+		</dependency>
 	</dependencies> 
 
 	<build>

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageAutenticateDefaultController {
 
-	@GetMapping({"autenticate","/"})
+	@GetMapping({"/autenticate","/"})
 	public String welCome() {
 		return "Autenticate";
 	}

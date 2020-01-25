@@ -50,6 +50,11 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()	
+			
+			     //página default ao logar
+		        .antMatchers("/autenticate").permitAll()
+		    
+		    
 				//ROTAS DE USUARIO
 			    .antMatchers("/cadastro").permitAll()
 			    .antMatchers("/emailUser").permitAll()
@@ -83,23 +88,22 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 			    //ROTAS DE PALESTRANTE
 			    .antMatchers("/emailSpeaker").permitAll()
 			    .antMatchers("/usuarios/palestrante/**").hasRole("ATUALIZAR_STATUS")
-			    .antMatchers("/palestra/speaker/**").permitAll()
+			    .antMatchers("/palestra/speaker/**").permitAll() 
 			    
-			    //página default ao logar
-			    .antMatchers("/autenticate").permitAll()
 			    
-				.anyRequest().authenticated()	
-			    //.anyRequest().denyAll()
+				.anyRequest().authenticated()				   
 				.and()
 			.formLogin()
-			.loginPage("/login")
-			.defaultSuccessUrl("/autenticate")			
-			.permitAll()
-			    .and()
-			   .logout()
-			      .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.and()
-				.exceptionHandling().accessDeniedPage("/403")
+			
+			   .loginPage("/login")
+			   .defaultSuccessUrl("/autenticate", true)			
+			   .permitAll()
+		 .and()
+		  .logout()
+		     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		 .and()
+			.exceptionHandling()
+			.accessDeniedPage("/403")
 		      .and()
 		      .sessionManagement()
 		           .maximumSessions(1)

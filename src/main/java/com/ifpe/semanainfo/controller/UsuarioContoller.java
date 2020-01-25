@@ -26,7 +26,7 @@ public class UsuarioContoller {
 	private ActivityService activityService;
 
 
-	@GetMapping("user")
+	@GetMapping("/user")
 	public String showHomeUser(Model model){
 		
 		List<Activity> activity = activityService.listActivity();
@@ -35,10 +35,10 @@ public class UsuarioContoller {
 		Registrations registrations = new Registrations();
 		model.addAttribute("registrations", registrations);
 		
-		return "user/home";
+		return "/user/home";
 	}
 	
-	@GetMapping("cadastro")
+	@GetMapping("/cadastro")
 	public String cad(Model model) { 
 		
 		UserModel usuario = new UserModel();
@@ -46,7 +46,7 @@ public class UsuarioContoller {
 		
 		Groups groups = groupService.get(4L);
 		model.addAttribute("groups", groups);
-		return "cadastro_alu";
+		return "/cadastro_alu";
 	}	
 	
 	
