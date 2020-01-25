@@ -20,7 +20,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 		
-	@GetMapping("admin/novo")
+	@GetMapping("/admin/novo")
 	public ModelAndView add() {
 		ModelAndView mv = new ModelAndView("admin/home");
 		mv.addObject("groups", groupRepository.findAll());
@@ -36,7 +36,7 @@ public class AdminController {
 		
     }
 	
-	@GetMapping("deleteAUser/{id}")
+	@GetMapping("/deleteAUser/{id}")
 	public String delete(@PathVariable("id") Long id) {
 		
 		adminService.deleteOneUser(id);

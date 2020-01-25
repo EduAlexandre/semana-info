@@ -26,7 +26,7 @@ public class UsuarioContoller {
 	private ActivityService activityService;
 
 
-	@GetMapping("user")
+	@GetMapping("/user")
 	public String showHomeUser(Model model){
 		
 		List<Activity> activity = activityService.listActivity();
@@ -38,7 +38,7 @@ public class UsuarioContoller {
 		return "user/home";
 	}
 	
-	@GetMapping("cadastro")
+	@GetMapping("/cadastro")
 	public String cad(Model model) { 
 		
 		UserModel usuario = new UserModel();
@@ -53,7 +53,7 @@ public class UsuarioContoller {
 	@GetMapping("/recuperar")
 	public String showRe() {
 		
-		return "/RecuperarSenha";
+		return "RecuperarSenha";
 	
 	}
 	
@@ -63,7 +63,7 @@ public class UsuarioContoller {
 		List<Activity> registrations = activityService.pickAllForUser(id);
 		model.addAttribute("activitys", registrations);
 		System.out.println(registrations.toString());
-		return "/user/listMyActivitys";
+		return "user/listMyActivitys";
 	}
 	
 

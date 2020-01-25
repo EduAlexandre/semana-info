@@ -36,7 +36,7 @@ public class ManagerController {
 	@Autowired
 	private ActivityService activityService;
 	
-	@GetMapping("manager")
+	@GetMapping("/manager")
 	public String showHome(Model model) {
 		
 		List<Activity> activitys = activityService.listActivity();
@@ -44,7 +44,7 @@ public class ManagerController {
 		return "manager/home";
 	}
 	
-	@GetMapping("palestrante/novo")
+	@GetMapping("/palestrante/novo")
 	public String cadPales(Model model) {
 		
 		UserModel speaker = new UserModel();
@@ -57,7 +57,7 @@ public class ManagerController {
 		
 	}
 	
-	@GetMapping("palestra/nova")
+	@GetMapping("/palestra/nova")
 	public String cadPalestra(Model model) {
 		
 		Activity activity = new Activity();

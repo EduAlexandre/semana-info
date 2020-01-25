@@ -29,7 +29,7 @@ public class ActivityController {
 	@Autowired
 	private AdminService adminService;
 	
-	@PostMapping("activitySave")
+	@PostMapping("/activitySave")
 	public String saveRoom(Activity activity, Model model){
 		
 		activityService.saveActivity(activity);
@@ -37,7 +37,7 @@ public class ActivityController {
 		return "redirect:manager";
 	}
 	
-	@GetMapping("editePalestra/{id}")
+	@GetMapping("/editePalestra/{id}")
 	public String edite(@PathVariable("id") Integer id ,Model model) {
 		
 		Activity activity = activityService.get(id);
@@ -52,7 +52,7 @@ public class ActivityController {
 		return "manager/edite";
 	}
 	
-	@GetMapping("deletePalestra/{id}")
+	@GetMapping("/deletePalestra/{id}")
 	public String excluir(@PathVariable("id") Integer id ) {
 		
 		activityService.deleteActivity(id);
@@ -60,7 +60,7 @@ public class ActivityController {
 		return "redirect:manager";
 	}
 	
-	@PostMapping("inscricao")
+	@PostMapping("/inscricao")
 	public String inscricao(Registrations registrations,RedirectAttributes ra) {
 		
 		String regisCheck = activityService.registration(registrations);
@@ -84,7 +84,7 @@ public class ActivityController {
 		
 		activityService.deleteRegistration(id);
 		
-		return "redirect:/user";
+		return "redirect:user";
 	}
 
 }

@@ -23,7 +23,7 @@ public class ParticipantController {
 			Participant participant = new Participant();
 			model.addAttribute("participant", participant);
 			
-			return "/participant/RegisterParticipant";
+			return "participant/RegisterParticipant";
 		} 
 		
 		@PostMapping("/saveParticipant")
@@ -31,7 +31,7 @@ public class ParticipantController {
 			
 			participantservice.save(participant);
 			
-			return "/participant/editParticipant";
+			return "participant/editParticipant";
 		}
 		
 		
@@ -40,7 +40,7 @@ public class ParticipantController {
 			List<Participant> list= participantservice.listAll();
 			model.addAttribute("participant", list);
 			
-			return "/participant/ListParticipant.html";
+			return "participant/ListParticipant.html";
 		}
 		
 		
@@ -50,6 +50,6 @@ public class ParticipantController {
 			Participant participant = participantservice.get(idParticipant);
 			model.addAttribute("participant", participant);
 			
-			return "redirect:/editParticipant";
+			return "redirect:editParticipant";
 		}
 }
