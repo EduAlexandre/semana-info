@@ -11,20 +11,20 @@ import com.ifpe.semanainfo.model.UserModel;
 import com.ifpe.semanainfo.service.AdminService;
 
 @Controller
-@RequestMapping("/usuarios")
+@RequestMapping("usuarios")
 public class AutenticacaoController {
 	
 	@Autowired
 	private AdminService serviceAdmin;
 	
-	@GetMapping("/confirmacao/{id}")
+	@GetMapping("confirmacao/{id}")
 	public String authUsuario(@PathVariable Long id,Model model) {
 		
 		
 		return "/login";
 	}
 	
-	@GetMapping("/gestor/{id}")
+	@GetMapping("gestor/{id}")
 	public String authManager(@PathVariable Long id) {
 		
 		if(id != null) {
@@ -35,10 +35,10 @@ public class AutenticacaoController {
 			return "redirect:/login";
 		}
 		
-		return "redirect:/login";
+		return "redirect:login";
 	}
 	
-	@GetMapping("/palestrante/{id}")
+	@GetMapping("palestrante/{id}")
 	public String authSpeaker(@PathVariable Long id) {
 		
 		if(id != null) {
@@ -51,7 +51,7 @@ public class AutenticacaoController {
 		return "redirect:/login";
 	}
 	
-	@GetMapping("/participante/{id}")
+	@GetMapping("participante/{id}")
 	public String authUsuario(@PathVariable Long id) {
 		
 		if(id != null) {

@@ -1,5 +1,7 @@
 package com.ifpe.semanainfo.email;
 
+
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -12,6 +14,10 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import com.ifpe.semanainfo.model.UserModel;
+
+
+
+
 
 @Component
 public class MailerManager {

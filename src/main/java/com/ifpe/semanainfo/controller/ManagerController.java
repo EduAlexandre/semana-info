@@ -18,6 +18,9 @@ import com.ifpe.semanainfo.service.AdminService;
 import com.ifpe.semanainfo.service.GroupsService;
 import com.ifpe.semanainfo.service.RoomService;
 
+
+
+
 @Controller
 public class ManagerController {
 	
@@ -33,7 +36,7 @@ public class ManagerController {
 	@Autowired
 	private ActivityService activityService;
 	
-	@GetMapping("/manager")
+	@GetMapping("manager")
 	public String showHome(Model model) {
 		
 		List<Activity> activitys = activityService.listActivity();
@@ -41,7 +44,7 @@ public class ManagerController {
 		return "manager/home";
 	}
 	
-	@GetMapping("/palestrante/novo")
+	@GetMapping("palestrante/novo")
 	public String cadPales(Model model) {
 		
 		UserModel speaker = new UserModel();
@@ -50,11 +53,11 @@ public class ManagerController {
 		Groups groups = groupService.get(3L);
 		model.addAttribute("groups", groups);
 		
-		return "manager/cadGestor";
+		return "manager/cadPalestrante";
 		
 	}
 	
-	@GetMapping("/palestra/nova")
+	@GetMapping("palestra/nova")
 	public String cadPalestra(Model model) {
 		
 		Activity activity = new Activity();

@@ -12,8 +12,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @Configuration
 @PropertySource({"classpath:env/mail.properties"})
-public class ConfigEmail {
-
+public class ConfigEmail {	
+	
 	@Autowired
 	private Environment env;
 		
@@ -22,8 +22,8 @@ public class ConfigEmail {
 		JavaMailSenderImpl  mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.sendgrid.net");
 		mailSender.setPort(587);
-		mailSender.setUsername("apikey");
-		mailSender.setPassword("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");		
+		mailSender.setUsername(env.getProperty("usernamed"));
+		mailSender.setPassword(env.getProperty("password"));		
 		
 		Properties props = new Properties();
 		props.put("mail.transport.protocol", "smtp");
@@ -36,5 +36,6 @@ public class ConfigEmail {
 		
 		return mailSender;
 	}
+
 	
 }
